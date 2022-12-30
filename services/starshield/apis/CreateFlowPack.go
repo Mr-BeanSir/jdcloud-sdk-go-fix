@@ -17,24 +17,23 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type CreateFlowPackRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
+	/* 实例ID  */
+	InstanceId string `json:"instanceId"`
 
-    /* 实例ID  */
-    InstanceId string `json:"instanceId"`
+	/* 流量包数量 (Optional) */
+	FlowPackNum *int `json:"flowPackNum"`
 
-    /* 流量包数量 (Optional) */
-    FlowPackNum *int `json:"flowPackNum"`
-
-    /* 支付成功返回路径 (Optional) */
-    ReturnUrl *string `json:"returnUrl"`
+	/* 支付成功返回路径 (Optional) */
+	ReturnUrl *string `json:"returnUrl"`
 }
 
 /*
@@ -44,19 +43,19 @@ type CreateFlowPackRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewCreateFlowPackRequest(
-    regionId string,
-    instanceId string,
+	regionId string,
+	instanceId string,
 ) *CreateFlowPackRequest {
 
 	return &CreateFlowPackRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/instances/{instanceId}/flowPack",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
-        InstanceId: instanceId,
+		RegionId:   regionId,
+		InstanceId: instanceId,
 	}
 }
 
@@ -67,71 +66,71 @@ func NewCreateFlowPackRequest(
  * param returnUrl: 支付成功返回路径 (Optional)
  */
 func NewCreateFlowPackRequestWithAllParams(
-    regionId string,
-    instanceId string,
-    flowPackNum *int,
-    returnUrl *string,
+	regionId string,
+	instanceId string,
+	flowPackNum *int,
+	returnUrl *string,
 ) *CreateFlowPackRequest {
 
-    return &CreateFlowPackRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances/{instanceId}/flowPack",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        InstanceId: instanceId,
-        FlowPackNum: flowPackNum,
-        ReturnUrl: returnUrl,
-    }
+	return &CreateFlowPackRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances/{instanceId}/flowPack",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:    regionId,
+		InstanceId:  instanceId,
+		FlowPackNum: flowPackNum,
+		ReturnUrl:   returnUrl,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewCreateFlowPackRequestWithoutParam() *CreateFlowPackRequest {
 
-    return &CreateFlowPackRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances/{instanceId}/flowPack",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &CreateFlowPackRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances/{instanceId}/flowPack",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *CreateFlowPackRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param instanceId: 实例ID(Required) */
 func (r *CreateFlowPackRequest) SetInstanceId(instanceId string) {
-    r.InstanceId = instanceId
+	r.InstanceId = instanceId
 }
 
 /* param flowPackNum: 流量包数量(Optional) */
 func (r *CreateFlowPackRequest) SetFlowPackNum(flowPackNum int) {
-    r.FlowPackNum = &flowPackNum
+	r.FlowPackNum = &flowPackNum
 }
 
 /* param returnUrl: 支付成功返回路径(Optional) */
 func (r *CreateFlowPackRequest) SetReturnUrl(returnUrl string) {
-    r.ReturnUrl = &returnUrl
+	r.ReturnUrl = &returnUrl
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r CreateFlowPackRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type CreateFlowPackResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result CreateFlowPackResult `json:"result"`
+	RequestID string               `json:"requestId"`
+	Error     core.ErrorResponse   `json:"error"`
+	Result    CreateFlowPackResult `json:"result"`
 }
 
 type CreateFlowPackResult struct {
-    BuyId string `json:"buyId"`
+	BuyId string `json:"buyId"`
 }

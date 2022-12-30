@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListAvailableCustomPagesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type ListAvailableCustomPagesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListAvailableCustomPagesRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListAvailableCustomPagesRequest {
 
 	return &ListAvailableCustomPagesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/custom_pages",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewListAvailableCustomPagesRequest(
  * param zone_identifier:  (Required)
  */
 func NewListAvailableCustomPagesRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListAvailableCustomPagesRequest {
 
-    return &ListAvailableCustomPagesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/custom_pages",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &ListAvailableCustomPagesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/custom_pages",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListAvailableCustomPagesRequestWithoutParam() *ListAvailableCustomPagesRequest {
 
-    return &ListAvailableCustomPagesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/custom_pages",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListAvailableCustomPagesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/custom_pages",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ListAvailableCustomPagesRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListAvailableCustomPagesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListAvailableCustomPagesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListAvailableCustomPagesResult `json:"result"`
+	RequestID string                         `json:"requestId"`
+	Error     core.ErrorResponse             `json:"error"`
+	Result    ListAvailableCustomPagesResult `json:"result"`
 }
 
 type ListAvailableCustomPagesResult struct {
-    DataList []starshield.CustomPage `json:"dataList"`
+	DataList []starshield.CustomPage `json:"dataList"`
 }

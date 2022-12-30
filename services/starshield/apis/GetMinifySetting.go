@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetMinifySettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetMinifySettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetMinifySettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetMinifySettingRequest {
 
 	return &GetMinifySettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$minify",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetMinifySettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetMinifySettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetMinifySettingRequest {
 
-    return &GetMinifySettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$minify",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetMinifySettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$minify",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetMinifySettingRequestWithoutParam() *GetMinifySettingRequest {
 
-    return &GetMinifySettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$minify",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetMinifySettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$minify",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetMinifySettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetMinifySettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetMinifySettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetMinifySettingResult `json:"result"`
+	RequestID string                 `json:"requestId"`
+	Error     core.ErrorResponse     `json:"error"`
+	Result    GetMinifySettingResult `json:"result"`
 }
 
 type GetMinifySettingResult struct {
-    Data starshield.Auto_MinifyAssets `json:"data"`
+	Data starshield.Auto_MinifyAssets `json:"data"`
 }

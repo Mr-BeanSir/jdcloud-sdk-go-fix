@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetSecurityLevelSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetSecurityLevelSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetSecurityLevelSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetSecurityLevelSettingRequest {
 
 	return &GetSecurityLevelSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$security_level",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetSecurityLevelSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetSecurityLevelSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetSecurityLevelSettingRequest {
 
-    return &GetSecurityLevelSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$security_level",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetSecurityLevelSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$security_level",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetSecurityLevelSettingRequestWithoutParam() *GetSecurityLevelSettingRequest {
 
-    return &GetSecurityLevelSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$security_level",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetSecurityLevelSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$security_level",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetSecurityLevelSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetSecurityLevelSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetSecurityLevelSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetSecurityLevelSettingResult `json:"result"`
+	RequestID string                        `json:"requestId"`
+	Error     core.ErrorResponse            `json:"error"`
+	Result    GetSecurityLevelSettingResult `json:"result"`
 }
 
 type GetSecurityLevelSettingResult struct {
-    Data starshield.SecurityLevel `json:"data"`
+	Data starshield.SecurityLevel `json:"data"`
 }

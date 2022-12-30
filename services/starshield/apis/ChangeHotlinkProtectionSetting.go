@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeHotlinkProtectionSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeHotlinkProtectionSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeHotlinkProtectionSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeHotlinkProtectionSettingRequest {
 
 	return &ChangeHotlinkProtectionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeHotlinkProtectionSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeHotlinkProtectionSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeHotlinkProtectionSettingRequest {
 
-    return &ChangeHotlinkProtectionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeHotlinkProtectionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeHotlinkProtectionSettingRequestWithoutParam() *ChangeHotlinkProtectionSettingRequest {
 
-    return &ChangeHotlinkProtectionSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeHotlinkProtectionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeHotlinkProtectionSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeHotlinkProtectionSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeHotlinkProtectionSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeHotlinkProtectionSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeHotlinkProtectionSettingResult `json:"result"`
+	RequestID string                               `json:"requestId"`
+	Error     core.ErrorResponse                   `json:"error"`
+	Result    ChangeHotlinkProtectionSettingResult `json:"result"`
 }
 
 type ChangeHotlinkProtectionSettingResult struct {
-    Data starshield.HotlinkProtection `json:"data"`
+	Data starshield.HotlinkProtection `json:"data"`
 }

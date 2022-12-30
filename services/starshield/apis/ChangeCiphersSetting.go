@@ -17,18 +17,17 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type ChangeCiphersSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的值 (Optional) */
-    Value []string `json:"value"`
+	/* 该设置的值 (Optional) */
+	Value []string `json:"value"`
 }
 
 /*
@@ -37,17 +36,17 @@ type ChangeCiphersSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeCiphersSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeCiphersSettingRequest {
 
 	return &ChangeCiphersSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$ciphers",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -56,57 +55,57 @@ func NewChangeCiphersSettingRequest(
  * param value: 该设置的值 (Optional)
  */
 func NewChangeCiphersSettingRequestWithAllParams(
-    zone_identifier string,
-    value []string,
+	zone_identifier string,
+	value []string,
 ) *ChangeCiphersSettingRequest {
 
-    return &ChangeCiphersSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ciphers",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeCiphersSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ciphers",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeCiphersSettingRequestWithoutParam() *ChangeCiphersSettingRequest {
 
-    return &ChangeCiphersSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ciphers",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeCiphersSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ciphers",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeCiphersSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的值(Optional) */
 func (r *ChangeCiphersSettingRequest) SetValue(value []string) {
-    r.Value = value
+	r.Value = value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeCiphersSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeCiphersSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeCiphersSettingResult `json:"result"`
+	RequestID string                     `json:"requestId"`
+	Error     core.ErrorResponse         `json:"error"`
+	Result    ChangeCiphersSettingResult `json:"result"`
 }
 
 type ChangeCiphersSettingResult struct {
-    DataList []string `json:"dataList"`
+	DataList []string `json:"dataList"`
 }

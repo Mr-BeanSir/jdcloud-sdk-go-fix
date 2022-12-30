@@ -17,34 +17,33 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListOfFirewallRulesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/* 防火墙规则标识符 (Optional) */
+	Id *string `json:"id"`
 
-    /* 防火墙规则标识符 (Optional) */
-    Id *string `json:"id"`
+	/* 描述中不区分大小写的搜索 (Optional) */
+	Description *string `json:"description"`
 
-    /* 描述中不区分大小写的搜索 (Optional) */
-    Description *string `json:"description"`
+	/* 规则操作上的精确匹配 (Optional) */
+	Action *string `json:"action"`
 
-    /* 规则操作上的精确匹配 (Optional) */
-    Action *string `json:"action"`
+	/* 此防火墙规则当前是否已暂停。 (Optional) */
+	Paused *bool `json:"paused"`
 
-    /* 此防火墙规则当前是否已暂停。 (Optional) */
-    Paused *bool `json:"paused"`
+	/* 分页结果的页码 (Optional) */
+	Page *int `json:"page"`
 
-    /* 分页结果的页码 (Optional) */
-    Page *int `json:"page"`
-
-    /* 每页的防火墙规则数 (Optional) */
-    Per_page *int `json:"per_page"`
+	/* 每页的防火墙规则数 (Optional) */
+	Per_page *int `json:"per_page"`
 }
 
 /*
@@ -53,17 +52,17 @@ type ListOfFirewallRulesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListOfFirewallRulesRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListOfFirewallRulesRequest {
 
 	return &ListOfFirewallRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$rules",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -77,92 +76,92 @@ func NewListOfFirewallRulesRequest(
  * param per_page: 每页的防火墙规则数 (Optional)
  */
 func NewListOfFirewallRulesRequestWithAllParams(
-    zone_identifier string,
-    id *string,
-    description *string,
-    action *string,
-    paused *bool,
-    page *int,
-    per_page *int,
+	zone_identifier string,
+	id *string,
+	description *string,
+	action *string,
+	paused *bool,
+	page *int,
+	per_page *int,
 ) *ListOfFirewallRulesRequest {
 
-    return &ListOfFirewallRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Id: id,
-        Description: description,
-        Action: action,
-        Paused: paused,
-        Page: page,
-        Per_page: per_page,
-    }
+	return &ListOfFirewallRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Id:              id,
+		Description:     description,
+		Action:          action,
+		Paused:          paused,
+		Page:            page,
+		Per_page:        per_page,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListOfFirewallRulesRequestWithoutParam() *ListOfFirewallRulesRequest {
 
-    return &ListOfFirewallRulesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListOfFirewallRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ListOfFirewallRulesRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param id: 防火墙规则标识符(Optional) */
 func (r *ListOfFirewallRulesRequest) SetId(id string) {
-    r.Id = &id
+	r.Id = &id
 }
 
 /* param description: 描述中不区分大小写的搜索(Optional) */
 func (r *ListOfFirewallRulesRequest) SetDescription(description string) {
-    r.Description = &description
+	r.Description = &description
 }
 
 /* param action: 规则操作上的精确匹配(Optional) */
 func (r *ListOfFirewallRulesRequest) SetAction(action string) {
-    r.Action = &action
+	r.Action = &action
 }
 
 /* param paused: 此防火墙规则当前是否已暂停。(Optional) */
 func (r *ListOfFirewallRulesRequest) SetPaused(paused bool) {
-    r.Paused = &paused
+	r.Paused = &paused
 }
 
 /* param page: 分页结果的页码(Optional) */
 func (r *ListOfFirewallRulesRequest) SetPage(page int) {
-    r.Page = &page
+	r.Page = &page
 }
 
 /* param per_page: 每页的防火墙规则数(Optional) */
 func (r *ListOfFirewallRulesRequest) SetPer_page(per_page int) {
-    r.Per_page = &per_page
+	r.Per_page = &per_page
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListOfFirewallRulesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListOfFirewallRulesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListOfFirewallRulesResult `json:"result"`
+	RequestID string                    `json:"requestId"`
+	Error     core.ErrorResponse        `json:"error"`
+	Result    ListOfFirewallRulesResult `json:"result"`
 }
 
 type ListOfFirewallRulesResult struct {
-    DataList []starshield.FirewallRule `json:"dataList"`
+	DataList []starshield.FirewallRule `json:"dataList"`
 }

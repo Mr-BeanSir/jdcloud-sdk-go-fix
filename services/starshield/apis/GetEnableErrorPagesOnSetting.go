@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetEnableErrorPagesOnSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetEnableErrorPagesOnSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetEnableErrorPagesOnSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetEnableErrorPagesOnSettingRequest {
 
 	return &GetEnableErrorPagesOnSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$origin_error_page_pass_thru",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetEnableErrorPagesOnSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetEnableErrorPagesOnSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetEnableErrorPagesOnSettingRequest {
 
-    return &GetEnableErrorPagesOnSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$origin_error_page_pass_thru",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetEnableErrorPagesOnSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$origin_error_page_pass_thru",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetEnableErrorPagesOnSettingRequestWithoutParam() *GetEnableErrorPagesOnSettingRequest {
 
-    return &GetEnableErrorPagesOnSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$origin_error_page_pass_thru",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetEnableErrorPagesOnSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$origin_error_page_pass_thru",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetEnableErrorPagesOnSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetEnableErrorPagesOnSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetEnableErrorPagesOnSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetEnableErrorPagesOnSettingResult `json:"result"`
+	RequestID string                             `json:"requestId"`
+	Error     core.ErrorResponse                 `json:"error"`
+	Result    GetEnableErrorPagesOnSettingResult `json:"result"`
 }
 
 type GetEnableErrorPagesOnSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

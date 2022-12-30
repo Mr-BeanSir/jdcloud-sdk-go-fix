@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetImageResizingSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetImageResizingSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetImageResizingSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetImageResizingSettingRequest {
 
 	return &GetImageResizingSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$image_resizing",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetImageResizingSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetImageResizingSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetImageResizingSettingRequest {
 
-    return &GetImageResizingSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$image_resizing",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetImageResizingSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$image_resizing",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetImageResizingSettingRequestWithoutParam() *GetImageResizingSettingRequest {
 
-    return &GetImageResizingSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$image_resizing",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetImageResizingSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$image_resizing",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetImageResizingSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetImageResizingSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetImageResizingSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetImageResizingSettingResult `json:"result"`
+	RequestID string                        `json:"requestId"`
+	Error     core.ErrorResponse            `json:"error"`
+	Result    GetImageResizingSettingResult `json:"result"`
 }
 
 type GetImageResizingSettingResult struct {
-    Data starshield.ImageResizing `json:"data"`
+	Data starshield.ImageResizing `json:"data"`
 }

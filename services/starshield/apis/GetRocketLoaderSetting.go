@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetRocketLoaderSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetRocketLoaderSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetRocketLoaderSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetRocketLoaderSettingRequest {
 
 	return &GetRocketLoaderSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$rocket_loader",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetRocketLoaderSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetRocketLoaderSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetRocketLoaderSettingRequest {
 
-    return &GetRocketLoaderSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$rocket_loader",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetRocketLoaderSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$rocket_loader",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetRocketLoaderSettingRequestWithoutParam() *GetRocketLoaderSettingRequest {
 
-    return &GetRocketLoaderSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$rocket_loader",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetRocketLoaderSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$rocket_loader",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetRocketLoaderSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetRocketLoaderSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetRocketLoaderSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetRocketLoaderSettingResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    GetRocketLoaderSettingResult `json:"result"`
 }
 
 type GetRocketLoaderSettingResult struct {
-    Data starshield.RocketLoader `json:"data"`
+	Data starshield.RocketLoader `json:"data"`
 }

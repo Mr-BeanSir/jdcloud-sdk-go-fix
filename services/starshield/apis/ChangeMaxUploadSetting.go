@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeMaxUploadSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*  (Optional) */
-    Value *int `json:"value"`
+	/*  (Optional) */
+	Value *int `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeMaxUploadSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeMaxUploadSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeMaxUploadSettingRequest {
 
 	return &ChangeMaxUploadSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$max_upload",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeMaxUploadSettingRequest(
  * param value:  (Optional)
  */
 func NewChangeMaxUploadSettingRequestWithAllParams(
-    zone_identifier string,
-    value *int,
+	zone_identifier string,
+	value *int,
 ) *ChangeMaxUploadSettingRequest {
 
-    return &ChangeMaxUploadSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$max_upload",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeMaxUploadSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$max_upload",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeMaxUploadSettingRequestWithoutParam() *ChangeMaxUploadSettingRequest {
 
-    return &ChangeMaxUploadSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$max_upload",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeMaxUploadSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$max_upload",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeMaxUploadSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: (Optional) */
 func (r *ChangeMaxUploadSettingRequest) SetValue(value int) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeMaxUploadSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeMaxUploadSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeMaxUploadSettingResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    ChangeMaxUploadSettingResult `json:"result"`
 }
 
 type ChangeMaxUploadSettingResult struct {
-    Data starshield.MaxUpload `json:"data"`
+	Data starshield.MaxUpload `json:"data"`
 }

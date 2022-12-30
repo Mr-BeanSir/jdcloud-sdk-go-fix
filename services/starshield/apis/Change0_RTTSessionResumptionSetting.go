@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type Change0_RTTSessionResumptionSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type Change0_RTTSessionResumptionSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChange0_RTTSessionResumptionSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *Change0_RTTSessionResumptionSettingRequest {
 
 	return &Change0_RTTSessionResumptionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$0rtt",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChange0_RTTSessionResumptionSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChange0_RTTSessionResumptionSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *Change0_RTTSessionResumptionSettingRequest {
 
-    return &Change0_RTTSessionResumptionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$0rtt",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &Change0_RTTSessionResumptionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$0rtt",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChange0_RTTSessionResumptionSettingRequestWithoutParam() *Change0_RTTSessionResumptionSettingRequest {
 
-    return &Change0_RTTSessionResumptionSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$0rtt",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &Change0_RTTSessionResumptionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$0rtt",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *Change0_RTTSessionResumptionSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *Change0_RTTSessionResumptionSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r Change0_RTTSessionResumptionSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type Change0_RTTSessionResumptionSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result Change0_RTTSessionResumptionSettingResult `json:"result"`
+	RequestID string                                    `json:"requestId"`
+	Error     core.ErrorResponse                        `json:"error"`
+	Result    Change0_RTTSessionResumptionSettingResult `json:"result"`
 }
 
 type Change0_RTTSessionResumptionSettingResult struct {
-    Data starshield.Zero_RTTValue `json:"data"`
+	Data starshield.Zero_RTTValue `json:"data"`
 }

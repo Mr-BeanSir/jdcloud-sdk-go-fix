@@ -17,32 +17,31 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type CreatePageRuleRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/* 根据请求评估的目标 (Optional) */
+	Targets []starshield.Target `json:"targets"`
 
-    /* 根据请求评估的目标 (Optional) */
-    Targets []starshield.Target `json:"targets"`
+	/* 如果此规则的目标与请求匹配，则要执行的操作集。操作可以将url重定向到另一个url或覆盖设置（但不能同时覆盖两者） (Optional) */
+	Actions []starshield.Action `json:"actions"`
 
-    /* 如果此规则的目标与请求匹配，则要执行的操作集。操作可以将url重定向到另一个url或覆盖设置（但不能同时覆盖两者） (Optional) */
-    Actions []starshield.Action `json:"actions"`
+	/* 一个数字，表示一个页面规则优先于另一个页面规则。
+	如果您可能有一个全面的页面规则（例如#1 “/images/”）
+	但是想要更具体的规则优先（例如#2 '/images/special/'），
+	您需要在后者（#2）上指定更高的优先级，以便它将覆盖第一个优先级。
+	 (Optional) */
+	Priority *int `json:"priority"`
 
-    /* 一个数字，表示一个页面规则优先于另一个页面规则。
-如果您可能有一个全面的页面规则（例如#1 “/images/”）
-但是想要更具体的规则优先（例如#2 '/images/special/'），
-您需要在后者（#2）上指定更高的优先级，以便它将覆盖第一个优先级。
- (Optional) */
-    Priority *int `json:"priority"`
-
-    /* 页面规则的状态 (Optional) */
-    Status *string `json:"status"`
+	/* 页面规则的状态 (Optional) */
+	Status *string `json:"status"`
 }
 
 /*
@@ -51,108 +50,113 @@ type CreatePageRuleRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewCreatePageRuleRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *CreatePageRuleRequest {
 
 	return &CreatePageRuleRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/pagerules",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
 /*
- * param zone_identifier:  (Required)
- * param targets: 根据请求评估的目标 (Optional)
- * param actions: 如果此规则的目标与请求匹配，则要执行的操作集。操作可以将url重定向到另一个url或覆盖设置（但不能同时覆盖两者） (Optional)
- * param priority: 一个数字，表示一个页面规则优先于另一个页面规则。
+  - param zone_identifier:  (Required)
+  - param targets: 根据请求评估的目标 (Optional)
+  - param actions: 如果此规则的目标与请求匹配，则要执行的操作集。操作可以将url重定向到另一个url或覆盖设置（但不能同时覆盖两者） (Optional)
+  - param priority: 一个数字，表示一个页面规则优先于另一个页面规则。
+
 如果您可能有一个全面的页面规则（例如#1 “/images/”）
 但是想要更具体的规则优先（例如#2 '/images/special/'），
 您需要在后者（#2）上指定更高的优先级，以便它将覆盖第一个优先级。
- (Optional)
- * param status: 页面规则的状态 (Optional)
- */
+
+	(Optional)
+	* param status: 页面规则的状态 (Optional)
+*/
 func NewCreatePageRuleRequestWithAllParams(
-    zone_identifier string,
-    targets []starshield.Target,
-    actions []starshield.Action,
-    priority *int,
-    status *string,
+	zone_identifier string,
+	targets []starshield.Target,
+	actions []starshield.Action,
+	priority *int,
+	status *string,
 ) *CreatePageRuleRequest {
 
-    return &CreatePageRuleRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/pagerules",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Targets: targets,
-        Actions: actions,
-        Priority: priority,
-        Status: status,
-    }
+	return &CreatePageRuleRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/pagerules",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Targets:         targets,
+		Actions:         actions,
+		Priority:        priority,
+		Status:          status,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewCreatePageRuleRequestWithoutParam() *CreatePageRuleRequest {
 
-    return &CreatePageRuleRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/pagerules",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &CreatePageRuleRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/pagerules",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *CreatePageRuleRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param targets: 根据请求评估的目标(Optional) */
 func (r *CreatePageRuleRequest) SetTargets(targets []starshield.Target) {
-    r.Targets = targets
+	r.Targets = targets
 }
 
 /* param actions: 如果此规则的目标与请求匹配，则要执行的操作集。操作可以将url重定向到另一个url或覆盖设置（但不能同时覆盖两者）(Optional) */
 func (r *CreatePageRuleRequest) SetActions(actions []starshield.Action) {
-    r.Actions = actions
+	r.Actions = actions
 }
 
-/* param priority: 一个数字，表示一个页面规则优先于另一个页面规则。
+/*
+	param priority: 一个数字，表示一个页面规则优先于另一个页面规则。
+
 如果您可能有一个全面的页面规则（例如#1 “/images/”）
 但是想要更具体的规则优先（例如#2 '/images/special/'），
 您需要在后者（#2）上指定更高的优先级，以便它将覆盖第一个优先级。
-(Optional) */
+(Optional)
+*/
 func (r *CreatePageRuleRequest) SetPriority(priority int) {
-    r.Priority = &priority
+	r.Priority = &priority
 }
 
 /* param status: 页面规则的状态(Optional) */
 func (r *CreatePageRuleRequest) SetStatus(status string) {
-    r.Status = &status
+	r.Status = &status
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r CreatePageRuleRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type CreatePageRuleResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result CreatePageRuleResult `json:"result"`
+	RequestID string               `json:"requestId"`
+	Error     core.ErrorResponse   `json:"error"`
+	Result    CreatePageRuleResult `json:"result"`
 }
 
 type CreatePageRuleResult struct {
-    Data starshield.PageRule `json:"data"`
+	Data starshield.PageRule `json:"data"`
 }

@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type EditZoneSettingsInfoRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 一或多个域配置对象。必须包含ID和值。 (Optional) */
-    Items []starshield.Item `json:"items"`
+	/* 一或多个域配置对象。必须包含ID和值。 (Optional) */
+	Items []starshield.Item `json:"items"`
 }
 
 /*
@@ -38,17 +37,17 @@ type EditZoneSettingsInfoRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewEditZoneSettingsInfoRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *EditZoneSettingsInfoRequest {
 
 	return &EditZoneSettingsInfoRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,55 +56,55 @@ func NewEditZoneSettingsInfoRequest(
  * param items: 一或多个域配置对象。必须包含ID和值。 (Optional)
  */
 func NewEditZoneSettingsInfoRequestWithAllParams(
-    zone_identifier string,
-    items []starshield.Item,
+	zone_identifier string,
+	items []starshield.Item,
 ) *EditZoneSettingsInfoRequest {
 
-    return &EditZoneSettingsInfoRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Items: items,
-    }
+	return &EditZoneSettingsInfoRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Items:           items,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewEditZoneSettingsInfoRequestWithoutParam() *EditZoneSettingsInfoRequest {
 
-    return &EditZoneSettingsInfoRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &EditZoneSettingsInfoRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *EditZoneSettingsInfoRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param items: 一或多个域配置对象。必须包含ID和值。(Optional) */
 func (r *EditZoneSettingsInfoRequest) SetItems(items []starshield.Item) {
-    r.Items = items
+	r.Items = items
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r EditZoneSettingsInfoRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type EditZoneSettingsInfoResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result EditZoneSettingsInfoResult `json:"result"`
+	RequestID string                     `json:"requestId"`
+	Error     core.ErrorResponse         `json:"error"`
+	Result    EditZoneSettingsInfoResult `json:"result"`
 }
 
 type EditZoneSettingsInfoResult struct {

@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeDevelopmentModeSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeDevelopmentModeSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeDevelopmentModeSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeDevelopmentModeSettingRequest {
 
 	return &ChangeDevelopmentModeSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$development_mode",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeDevelopmentModeSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeDevelopmentModeSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeDevelopmentModeSettingRequest {
 
-    return &ChangeDevelopmentModeSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$development_mode",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeDevelopmentModeSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$development_mode",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeDevelopmentModeSettingRequestWithoutParam() *ChangeDevelopmentModeSettingRequest {
 
-    return &ChangeDevelopmentModeSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$development_mode",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeDevelopmentModeSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$development_mode",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeDevelopmentModeSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeDevelopmentModeSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeDevelopmentModeSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeDevelopmentModeSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeDevelopmentModeSettingResult `json:"result"`
+	RequestID string                             `json:"requestId"`
+	Error     core.ErrorResponse                 `json:"error"`
+	Result    ChangeDevelopmentModeSettingResult `json:"result"`
 }
 
 type ChangeDevelopmentModeSettingResult struct {
-    Data starshield.DevelopmentMode `json:"data"`
+	Data starshield.DevelopmentMode `json:"data"`
 }

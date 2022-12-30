@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetHTTP3SettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetHTTP3SettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetHTTP3SettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetHTTP3SettingRequest {
 
 	return &GetHTTP3SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$http3",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetHTTP3SettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetHTTP3SettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetHTTP3SettingRequest {
 
-    return &GetHTTP3SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$http3",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetHTTP3SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$http3",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetHTTP3SettingRequestWithoutParam() *GetHTTP3SettingRequest {
 
-    return &GetHTTP3SettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$http3",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetHTTP3SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$http3",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetHTTP3SettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetHTTP3SettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetHTTP3SettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetHTTP3SettingResult `json:"result"`
+	RequestID string                `json:"requestId"`
+	Error     core.ErrorResponse    `json:"error"`
+	Result    GetHTTP3SettingResult `json:"result"`
 }
 
 type GetHTTP3SettingResult struct {
-    Data starshield.HTTP3Value `json:"data"`
+	Data starshield.HTTP3Value `json:"data"`
 }

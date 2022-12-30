@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type CreateFirewallRulesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*  (Optional) */
-    FirewallRules []starshield.FirewallRule `json:"firewallRules"`
+	/*  (Optional) */
+	FirewallRules []starshield.FirewallRule `json:"firewallRules"`
 }
 
 /*
@@ -38,17 +37,17 @@ type CreateFirewallRulesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewCreateFirewallRulesRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *CreateFirewallRulesRequest {
 
 	return &CreateFirewallRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$rules",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewCreateFirewallRulesRequest(
  * param firewallRules:  (Optional)
  */
 func NewCreateFirewallRulesRequestWithAllParams(
-    zone_identifier string,
-    firewallRules []starshield.FirewallRule,
+	zone_identifier string,
+	firewallRules []starshield.FirewallRule,
 ) *CreateFirewallRulesRequest {
 
-    return &CreateFirewallRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        FirewallRules: firewallRules,
-    }
+	return &CreateFirewallRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		FirewallRules:   firewallRules,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewCreateFirewallRulesRequestWithoutParam() *CreateFirewallRulesRequest {
 
-    return &CreateFirewallRulesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &CreateFirewallRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *CreateFirewallRulesRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param firewallRules: (Optional) */
 func (r *CreateFirewallRulesRequest) SetFirewallRules(firewallRules []starshield.FirewallRule) {
-    r.FirewallRules = firewallRules
+	r.FirewallRules = firewallRules
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r CreateFirewallRulesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type CreateFirewallRulesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result CreateFirewallRulesResult `json:"result"`
+	RequestID string                    `json:"requestId"`
+	Error     core.ErrorResponse        `json:"error"`
+	Result    CreateFirewallRulesResult `json:"result"`
 }
 
 type CreateFirewallRulesResult struct {
-    DataList []starshield.FirewallRule `json:"dataList"`
+	DataList []starshield.FirewallRule `json:"dataList"`
 }

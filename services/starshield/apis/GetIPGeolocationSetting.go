@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetIPGeolocationSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetIPGeolocationSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetIPGeolocationSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetIPGeolocationSettingRequest {
 
 	return &GetIPGeolocationSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$ip_geolocation",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetIPGeolocationSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetIPGeolocationSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetIPGeolocationSettingRequest {
 
-    return &GetIPGeolocationSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ip_geolocation",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetIPGeolocationSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ip_geolocation",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetIPGeolocationSettingRequestWithoutParam() *GetIPGeolocationSettingRequest {
 
-    return &GetIPGeolocationSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ip_geolocation",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetIPGeolocationSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ip_geolocation",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetIPGeolocationSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetIPGeolocationSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetIPGeolocationSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetIPGeolocationSettingResult `json:"result"`
+	RequestID string                        `json:"requestId"`
+	Error     core.ErrorResponse            `json:"error"`
+	Result    GetIPGeolocationSettingResult `json:"result"`
 }
 
 type GetIPGeolocationSettingResult struct {
-    Data starshield.IPGeolocation `json:"data"`
+	Data starshield.IPGeolocation `json:"data"`
 }

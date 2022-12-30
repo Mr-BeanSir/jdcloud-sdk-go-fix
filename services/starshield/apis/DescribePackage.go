@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type DescribePackageRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
-
-    /* 套餐类型  */
-    PackType int `json:"packType"`
+	/* 套餐类型  */
+	PackType int `json:"packType"`
 }
 
 /*
@@ -39,19 +38,19 @@ type DescribePackageRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDescribePackageRequest(
-    regionId string,
-    packType int,
+	regionId string,
+	packType int,
 ) *DescribePackageRequest {
 
 	return &DescribePackageRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/packages/{packType}",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
-        PackType: packType,
+		RegionId: regionId,
+		PackType: packType,
 	}
 }
 
@@ -60,57 +59,57 @@ func NewDescribePackageRequest(
  * param packType: 套餐类型 (Required)
  */
 func NewDescribePackageRequestWithAllParams(
-    regionId string,
-    packType int,
+	regionId string,
+	packType int,
 ) *DescribePackageRequest {
 
-    return &DescribePackageRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/packages/{packType}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        PackType: packType,
-    }
+	return &DescribePackageRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/packages/{packType}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId: regionId,
+		PackType: packType,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDescribePackageRequestWithoutParam() *DescribePackageRequest {
 
-    return &DescribePackageRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/packages/{packType}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DescribePackageRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/packages/{packType}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *DescribePackageRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param packType: 套餐类型(Required) */
 func (r *DescribePackageRequest) SetPackType(packType int) {
-    r.PackType = packType
+	r.PackType = packType
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DescribePackageRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type DescribePackageResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DescribePackageResult `json:"result"`
+	RequestID string                `json:"requestId"`
+	Error     core.ErrorResponse    `json:"error"`
+	Result    DescribePackageResult `json:"result"`
 }
 
 type DescribePackageResult struct {
-    DescribePackRes starshield.DescribePackRes `json:"describePackRes"`
+	DescribePackRes starshield.DescribePackRes `json:"describePackRes"`
 }

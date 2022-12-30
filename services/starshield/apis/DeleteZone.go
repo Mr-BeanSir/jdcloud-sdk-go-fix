@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type DeleteZoneRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Identifier string `json:"identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type DeleteZoneRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDeleteZoneRequest(
-    identifier string,
+	identifier string,
 ) *DeleteZoneRequest {
 
 	return &DeleteZoneRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{identifier}",
 			Method:  "DELETE",
 			Header:  nil,
 			Version: "v1",
 		},
-        Identifier: identifier,
+		Identifier: identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewDeleteZoneRequest(
  * param identifier:  (Required)
  */
 func NewDeleteZoneRequestWithAllParams(
-    identifier string,
+	identifier string,
 ) *DeleteZoneRequest {
 
-    return &DeleteZoneRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-        Identifier: identifier,
-    }
+	return &DeleteZoneRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+		Identifier: identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDeleteZoneRequestWithoutParam() *DeleteZoneRequest {
 
-    return &DeleteZoneRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DeleteZoneRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param identifier: (Required) */
 func (r *DeleteZoneRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DeleteZoneRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type DeleteZoneResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DeleteZoneResult `json:"result"`
+	RequestID string             `json:"requestId"`
+	Error     core.ErrorResponse `json:"error"`
+	Result    DeleteZoneResult   `json:"result"`
 }
 
 type DeleteZoneResult struct {
-    Data starshield.Zone `json:"data"`
+	Data starshield.Zone `json:"data"`
 }

@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeCacheLevelSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的有效值 (Optional) */
-    Value *string `json:"value"`
+	/* 该设置的有效值 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeCacheLevelSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeCacheLevelSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeCacheLevelSettingRequest {
 
 	return &ChangeCacheLevelSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$cache_level",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeCacheLevelSettingRequest(
  * param value: 该设置的有效值 (Optional)
  */
 func NewChangeCacheLevelSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeCacheLevelSettingRequest {
 
-    return &ChangeCacheLevelSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$cache_level",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeCacheLevelSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$cache_level",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeCacheLevelSettingRequestWithoutParam() *ChangeCacheLevelSettingRequest {
 
-    return &ChangeCacheLevelSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$cache_level",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeCacheLevelSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$cache_level",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeCacheLevelSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的有效值(Optional) */
 func (r *ChangeCacheLevelSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeCacheLevelSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeCacheLevelSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeCacheLevelSettingResult `json:"result"`
+	RequestID string                        `json:"requestId"`
+	Error     core.ErrorResponse            `json:"error"`
+	Result    ChangeCacheLevelSettingResult `json:"result"`
 }
 
 type ChangeCacheLevelSettingResult struct {
-    Data starshield.CloudflareCacheLevel `json:"data"`
+	Data starshield.CloudflareCacheLevel `json:"data"`
 }

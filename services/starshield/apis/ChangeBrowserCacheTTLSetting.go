@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeBrowserCacheTTLSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的有效值 (Optional) */
-    Value *int `json:"value"`
+	/* 该设置的有效值 (Optional) */
+	Value *int `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeBrowserCacheTTLSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeBrowserCacheTTLSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeBrowserCacheTTLSettingRequest {
 
 	return &ChangeBrowserCacheTTLSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeBrowserCacheTTLSettingRequest(
  * param value: 该设置的有效值 (Optional)
  */
 func NewChangeBrowserCacheTTLSettingRequestWithAllParams(
-    zone_identifier string,
-    value *int,
+	zone_identifier string,
+	value *int,
 ) *ChangeBrowserCacheTTLSettingRequest {
 
-    return &ChangeBrowserCacheTTLSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeBrowserCacheTTLSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeBrowserCacheTTLSettingRequestWithoutParam() *ChangeBrowserCacheTTLSettingRequest {
 
-    return &ChangeBrowserCacheTTLSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeBrowserCacheTTLSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeBrowserCacheTTLSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的有效值(Optional) */
 func (r *ChangeBrowserCacheTTLSettingRequest) SetValue(value int) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeBrowserCacheTTLSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeBrowserCacheTTLSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeBrowserCacheTTLSettingResult `json:"result"`
+	RequestID string                             `json:"requestId"`
+	Error     core.ErrorResponse                 `json:"error"`
+	Result    ChangeBrowserCacheTTLSettingResult `json:"result"`
 }
 
 type ChangeBrowserCacheTTLSettingResult struct {
-    Data starshield.BrowserCacheTTL `json:"data"`
+	Data starshield.BrowserCacheTTL `json:"data"`
 }

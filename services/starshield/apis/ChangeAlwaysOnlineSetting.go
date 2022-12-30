@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeAlwaysOnlineSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeAlwaysOnlineSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeAlwaysOnlineSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeAlwaysOnlineSettingRequest {
 
 	return &ChangeAlwaysOnlineSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$always_online",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeAlwaysOnlineSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeAlwaysOnlineSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeAlwaysOnlineSettingRequest {
 
-    return &ChangeAlwaysOnlineSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$always_online",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeAlwaysOnlineSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$always_online",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeAlwaysOnlineSettingRequestWithoutParam() *ChangeAlwaysOnlineSettingRequest {
 
-    return &ChangeAlwaysOnlineSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$always_online",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeAlwaysOnlineSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$always_online",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeAlwaysOnlineSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeAlwaysOnlineSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeAlwaysOnlineSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeAlwaysOnlineSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeAlwaysOnlineSettingResult `json:"result"`
+	RequestID string                          `json:"requestId"`
+	Error     core.ErrorResponse              `json:"error"`
+	Result    ChangeAlwaysOnlineSettingResult `json:"result"`
 }
 
 type ChangeAlwaysOnlineSettingResult struct {
-    Data starshield.AlwaysOnlineMode `json:"data"`
+	Data starshield.AlwaysOnlineMode `json:"data"`
 }

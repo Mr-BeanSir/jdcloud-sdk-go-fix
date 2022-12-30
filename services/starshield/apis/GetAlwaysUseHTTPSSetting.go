@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetAlwaysUseHTTPSSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetAlwaysUseHTTPSSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetAlwaysUseHTTPSSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAlwaysUseHTTPSSettingRequest {
 
 	return &GetAlwaysUseHTTPSSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$always_use_https",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetAlwaysUseHTTPSSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetAlwaysUseHTTPSSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAlwaysUseHTTPSSettingRequest {
 
-    return &GetAlwaysUseHTTPSSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$always_use_https",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetAlwaysUseHTTPSSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$always_use_https",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetAlwaysUseHTTPSSettingRequestWithoutParam() *GetAlwaysUseHTTPSSettingRequest {
 
-    return &GetAlwaysUseHTTPSSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$always_use_https",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetAlwaysUseHTTPSSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$always_use_https",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetAlwaysUseHTTPSSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetAlwaysUseHTTPSSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetAlwaysUseHTTPSSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetAlwaysUseHTTPSSettingResult `json:"result"`
+	RequestID string                         `json:"requestId"`
+	Error     core.ErrorResponse             `json:"error"`
+	Result    GetAlwaysUseHTTPSSettingResult `json:"result"`
 }
 
 type GetAlwaysUseHTTPSSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

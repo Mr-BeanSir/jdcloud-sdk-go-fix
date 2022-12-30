@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetEmailObfuscationSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetEmailObfuscationSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetEmailObfuscationSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetEmailObfuscationSettingRequest {
 
 	return &GetEmailObfuscationSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$email_obfuscation",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetEmailObfuscationSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetEmailObfuscationSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetEmailObfuscationSettingRequest {
 
-    return &GetEmailObfuscationSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$email_obfuscation",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetEmailObfuscationSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$email_obfuscation",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetEmailObfuscationSettingRequestWithoutParam() *GetEmailObfuscationSettingRequest {
 
-    return &GetEmailObfuscationSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$email_obfuscation",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetEmailObfuscationSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$email_obfuscation",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetEmailObfuscationSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetEmailObfuscationSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetEmailObfuscationSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetEmailObfuscationSettingResult `json:"result"`
+	RequestID string                           `json:"requestId"`
+	Error     core.ErrorResponse               `json:"error"`
+	Result    GetEmailObfuscationSettingResult `json:"result"`
 }
 
 type GetEmailObfuscationSettingResult struct {
-    Data starshield.EmailObfuscation `json:"data"`
+	Data starshield.EmailObfuscation `json:"data"`
 }

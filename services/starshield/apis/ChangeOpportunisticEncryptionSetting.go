@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeOpportunisticEncryptionSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeOpportunisticEncryptionSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeOpportunisticEncryptionSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeOpportunisticEncryptionSettingRequest {
 
 	return &ChangeOpportunisticEncryptionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$opportunistic_encryption",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeOpportunisticEncryptionSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeOpportunisticEncryptionSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeOpportunisticEncryptionSettingRequest {
 
-    return &ChangeOpportunisticEncryptionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$opportunistic_encryption",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeOpportunisticEncryptionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$opportunistic_encryption",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeOpportunisticEncryptionSettingRequestWithoutParam() *ChangeOpportunisticEncryptionSettingRequest {
 
-    return &ChangeOpportunisticEncryptionSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$opportunistic_encryption",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeOpportunisticEncryptionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$opportunistic_encryption",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeOpportunisticEncryptionSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeOpportunisticEncryptionSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeOpportunisticEncryptionSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeOpportunisticEncryptionSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeOpportunisticEncryptionSettingResult `json:"result"`
+	RequestID string                                     `json:"requestId"`
+	Error     core.ErrorResponse                         `json:"error"`
+	Result    ChangeOpportunisticEncryptionSettingResult `json:"result"`
 }
 
 type ChangeOpportunisticEncryptionSettingResult struct {
-    Data starshield.ZoneEnableOpportunisticEncryption `json:"data"`
+	Data starshield.ZoneEnableOpportunisticEncryption `json:"data"`
 }

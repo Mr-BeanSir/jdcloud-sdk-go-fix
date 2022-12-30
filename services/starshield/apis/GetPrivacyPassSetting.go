@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetPrivacyPassSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetPrivacyPassSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetPrivacyPassSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetPrivacyPassSettingRequest {
 
 	return &GetPrivacyPassSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$privacy_pass",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetPrivacyPassSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetPrivacyPassSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetPrivacyPassSettingRequest {
 
-    return &GetPrivacyPassSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$privacy_pass",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetPrivacyPassSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$privacy_pass",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetPrivacyPassSettingRequestWithoutParam() *GetPrivacyPassSettingRequest {
 
-    return &GetPrivacyPassSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$privacy_pass",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetPrivacyPassSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$privacy_pass",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetPrivacyPassSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetPrivacyPassSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetPrivacyPassSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetPrivacyPassSettingResult `json:"result"`
+	RequestID string                      `json:"requestId"`
+	Error     core.ErrorResponse          `json:"error"`
+	Result    GetPrivacyPassSettingResult `json:"result"`
 }
 
 type GetPrivacyPassSettingResult struct {
-    Data starshield.PrivacyPass `json:"data"`
+	Data starshield.PrivacyPass `json:"data"`
 }

@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type DescribeInstanceByOrderNoRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
-
-    /*   */
-    OrderNumber string `json:"orderNumber"`
+	/*   */
+	OrderNumber string `json:"orderNumber"`
 }
 
 /*
@@ -39,19 +38,19 @@ type DescribeInstanceByOrderNoRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDescribeInstanceByOrderNoRequest(
-    regionId string,
-    orderNumber string,
+	regionId string,
+	orderNumber string,
 ) *DescribeInstanceByOrderNoRequest {
 
 	return &DescribeInstanceByOrderNoRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/instance/{orderNumber}/describeInstance",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
-        OrderNumber: orderNumber,
+		RegionId:    regionId,
+		OrderNumber: orderNumber,
 	}
 }
 
@@ -60,57 +59,57 @@ func NewDescribeInstanceByOrderNoRequest(
  * param orderNumber:  (Required)
  */
 func NewDescribeInstanceByOrderNoRequestWithAllParams(
-    regionId string,
-    orderNumber string,
+	regionId string,
+	orderNumber string,
 ) *DescribeInstanceByOrderNoRequest {
 
-    return &DescribeInstanceByOrderNoRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instance/{orderNumber}/describeInstance",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        OrderNumber: orderNumber,
-    }
+	return &DescribeInstanceByOrderNoRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instance/{orderNumber}/describeInstance",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:    regionId,
+		OrderNumber: orderNumber,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDescribeInstanceByOrderNoRequestWithoutParam() *DescribeInstanceByOrderNoRequest {
 
-    return &DescribeInstanceByOrderNoRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instance/{orderNumber}/describeInstance",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DescribeInstanceByOrderNoRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instance/{orderNumber}/describeInstance",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *DescribeInstanceByOrderNoRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param orderNumber: (Required) */
 func (r *DescribeInstanceByOrderNoRequest) SetOrderNumber(orderNumber string) {
-    r.OrderNumber = orderNumber
+	r.OrderNumber = orderNumber
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DescribeInstanceByOrderNoRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type DescribeInstanceByOrderNoResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DescribeInstanceByOrderNoResult `json:"result"`
+	RequestID string                          `json:"requestId"`
+	Error     core.ErrorResponse              `json:"error"`
+	Result    DescribeInstanceByOrderNoResult `json:"result"`
 }
 
 type DescribeInstanceByOrderNoResult struct {
-    DescribeInstancesRes starshield.DescribeInstancesRes `json:"describeInstancesRes"`
+	DescribeInstancesRes starshield.DescribeInstancesRes `json:"describeInstancesRes"`
 }

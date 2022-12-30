@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type UniversalSSLSettingsDetailsRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type UniversalSSLSettingsDetailsRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewUniversalSSLSettingsDetailsRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *UniversalSSLSettingsDetailsRequest {
 
 	return &UniversalSSLSettingsDetailsRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/ssl$$universal$$settings",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewUniversalSSLSettingsDetailsRequest(
  * param zone_identifier:  (Required)
  */
 func NewUniversalSSLSettingsDetailsRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *UniversalSSLSettingsDetailsRequest {
 
-    return &UniversalSSLSettingsDetailsRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/ssl$$universal$$settings",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &UniversalSSLSettingsDetailsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/ssl$$universal$$settings",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewUniversalSSLSettingsDetailsRequestWithoutParam() *UniversalSSLSettingsDetailsRequest {
 
-    return &UniversalSSLSettingsDetailsRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/ssl$$universal$$settings",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &UniversalSSLSettingsDetailsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/ssl$$universal$$settings",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *UniversalSSLSettingsDetailsRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r UniversalSSLSettingsDetailsRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type UniversalSSLSettingsDetailsResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result UniversalSSLSettingsDetailsResult `json:"result"`
+	RequestID string                            `json:"requestId"`
+	Error     core.ErrorResponse                `json:"error"`
+	Result    UniversalSSLSettingsDetailsResult `json:"result"`
 }
 
 type UniversalSSLSettingsDetailsResult struct {
-    Data starshield.UniversalSSLSetting `json:"data"`
+	Data starshield.UniversalSSLSetting `json:"data"`
 }

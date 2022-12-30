@@ -17,15 +17,14 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type DescribeBotStatusRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    ZoneId string `json:"zoneId"`
+	/*   */
+	ZoneId string `json:"zoneId"`
 }
 
 /*
@@ -34,17 +33,17 @@ type DescribeBotStatusRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDescribeBotStatusRequest(
-    zoneId string,
+	zoneId string,
 ) *DescribeBotStatusRequest {
 
 	return &DescribeBotStatusRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/bot/{zoneId}",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        ZoneId: zoneId,
+		ZoneId: zoneId,
 	}
 }
 
@@ -52,54 +51,54 @@ func NewDescribeBotStatusRequest(
  * param zoneId:  (Required)
  */
 func NewDescribeBotStatusRequestWithAllParams(
-    zoneId string,
+	zoneId string,
 ) *DescribeBotStatusRequest {
 
-    return &DescribeBotStatusRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/bot/{zoneId}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        ZoneId: zoneId,
-    }
+	return &DescribeBotStatusRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/bot/{zoneId}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		ZoneId: zoneId,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDescribeBotStatusRequestWithoutParam() *DescribeBotStatusRequest {
 
-    return &DescribeBotStatusRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/bot/{zoneId}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DescribeBotStatusRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/bot/{zoneId}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zoneId: (Required) */
 func (r *DescribeBotStatusRequest) SetZoneId(zoneId string) {
-    r.ZoneId = zoneId
+	r.ZoneId = zoneId
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DescribeBotStatusRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type DescribeBotStatusResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DescribeBotStatusResult `json:"result"`
+	RequestID string                  `json:"requestId"`
+	Error     core.ErrorResponse      `json:"error"`
+	Result    DescribeBotStatusResult `json:"result"`
 }
 
 type DescribeBotStatusResult struct {
-    ZoneId string `json:"zoneId"`
-    InstanceId string `json:"instanceId"`
-    SubscriptionType string `json:"subscriptionType"`
-    SubscriptionId string `json:"subscriptionId"`
-    SwitchStatus string `json:"switchStatus"`
+	ZoneId           string `json:"zoneId"`
+	InstanceId       string `json:"instanceId"`
+	SubscriptionType string `json:"subscriptionType"`
+	SubscriptionId   string `json:"subscriptionId"`
+	SwitchStatus     string `json:"switchStatus"`
 }

@@ -17,18 +17,17 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type DeleteAdvancedCertificateManagerCertificatePackRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*   */
-    Identifier string `json:"identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 }
 
 /*
@@ -38,19 +37,19 @@ type DeleteAdvancedCertificateManagerCertificatePackRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDeleteAdvancedCertificateManagerCertificatePackRequest(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *DeleteAdvancedCertificateManagerCertificatePackRequest {
 
 	return &DeleteAdvancedCertificateManagerCertificatePackRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/ssl$$certificate_packs/{identifier}",
 			Method:  "DELETE",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
 	}
 }
 
@@ -59,57 +58,57 @@ func NewDeleteAdvancedCertificateManagerCertificatePackRequest(
  * param identifier:  (Required)
  */
 func NewDeleteAdvancedCertificateManagerCertificatePackRequestWithAllParams(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *DeleteAdvancedCertificateManagerCertificatePackRequest {
 
-    return &DeleteAdvancedCertificateManagerCertificatePackRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/ssl$$certificate_packs/{identifier}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
-    }
+	return &DeleteAdvancedCertificateManagerCertificatePackRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/ssl$$certificate_packs/{identifier}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDeleteAdvancedCertificateManagerCertificatePackRequestWithoutParam() *DeleteAdvancedCertificateManagerCertificatePackRequest {
 
-    return &DeleteAdvancedCertificateManagerCertificatePackRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/ssl$$certificate_packs/{identifier}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DeleteAdvancedCertificateManagerCertificatePackRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/ssl$$certificate_packs/{identifier}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *DeleteAdvancedCertificateManagerCertificatePackRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param identifier: (Required) */
 func (r *DeleteAdvancedCertificateManagerCertificatePackRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DeleteAdvancedCertificateManagerCertificatePackRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type DeleteAdvancedCertificateManagerCertificatePackResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DeleteAdvancedCertificateManagerCertificatePackResult `json:"result"`
+	RequestID string                                                `json:"requestId"`
+	Error     core.ErrorResponse                                    `json:"error"`
+	Result    DeleteAdvancedCertificateManagerCertificatePackResult `json:"result"`
 }
 
 type DeleteAdvancedCertificateManagerCertificatePackResult struct {
-    Data string `json:"data"`
+	Data string `json:"data"`
 }

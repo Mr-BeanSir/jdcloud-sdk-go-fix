@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeEnableQueryStringSortSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeEnableQueryStringSortSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeEnableQueryStringSortSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeEnableQueryStringSortSettingRequest {
 
 	return &ChangeEnableQueryStringSortSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeEnableQueryStringSortSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeEnableQueryStringSortSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeEnableQueryStringSortSettingRequest {
 
-    return &ChangeEnableQueryStringSortSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeEnableQueryStringSortSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeEnableQueryStringSortSettingRequestWithoutParam() *ChangeEnableQueryStringSortSettingRequest {
 
-    return &ChangeEnableQueryStringSortSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeEnableQueryStringSortSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeEnableQueryStringSortSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeEnableQueryStringSortSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeEnableQueryStringSortSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeEnableQueryStringSortSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeEnableQueryStringSortSettingResult `json:"result"`
+	RequestID string                                   `json:"requestId"`
+	Error     core.ErrorResponse                       `json:"error"`
+	Result    ChangeEnableQueryStringSortSettingResult `json:"result"`
 }
 
 type ChangeEnableQueryStringSortSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

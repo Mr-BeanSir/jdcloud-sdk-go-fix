@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetPseudoIPv4SettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetPseudoIPv4SettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetPseudoIPv4SettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetPseudoIPv4SettingRequest {
 
 	return &GetPseudoIPv4SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetPseudoIPv4SettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetPseudoIPv4SettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetPseudoIPv4SettingRequest {
 
-    return &GetPseudoIPv4SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetPseudoIPv4SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetPseudoIPv4SettingRequestWithoutParam() *GetPseudoIPv4SettingRequest {
 
-    return &GetPseudoIPv4SettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetPseudoIPv4SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetPseudoIPv4SettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetPseudoIPv4SettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetPseudoIPv4SettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetPseudoIPv4SettingResult `json:"result"`
+	RequestID string                     `json:"requestId"`
+	Error     core.ErrorResponse         `json:"error"`
+	Result    GetPseudoIPv4SettingResult `json:"result"`
 }
 
 type GetPseudoIPv4SettingResult struct {
-    Data starshield.PseudoIPv4Value `json:"data"`
+	Data starshield.PseudoIPv4Value `json:"data"`
 }

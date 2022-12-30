@@ -17,25 +17,24 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type UpdateCustomPageURLRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 
-    /*   */
-    Identifier string `json:"identifier"`
+	/* 与自定义页面关联的URL。 (Optional) */
+	Url *string `json:"url"`
 
-    /* 与自定义页面关联的URL。 (Optional) */
-    Url *string `json:"url"`
-
-    /* 自定义页面状态 (Optional) */
-    State *string `json:"state"`
+	/* 自定义页面状态 (Optional) */
+	State *string `json:"state"`
 }
 
 /*
@@ -45,19 +44,19 @@ type UpdateCustomPageURLRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewUpdateCustomPageURLRequest(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *UpdateCustomPageURLRequest {
 
 	return &UpdateCustomPageURLRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/custom_pages/{identifier}",
 			Method:  "PUT",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
 	}
 }
 
@@ -68,71 +67,71 @@ func NewUpdateCustomPageURLRequest(
  * param state: 自定义页面状态 (Optional)
  */
 func NewUpdateCustomPageURLRequestWithAllParams(
-    zone_identifier string,
-    identifier string,
-    url *string,
-    state *string,
+	zone_identifier string,
+	identifier string,
+	url *string,
+	state *string,
 ) *UpdateCustomPageURLRequest {
 
-    return &UpdateCustomPageURLRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/custom_pages/{identifier}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
-        Url: url,
-        State: state,
-    }
+	return &UpdateCustomPageURLRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/custom_pages/{identifier}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
+		Url:             url,
+		State:           state,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewUpdateCustomPageURLRequestWithoutParam() *UpdateCustomPageURLRequest {
 
-    return &UpdateCustomPageURLRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/custom_pages/{identifier}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &UpdateCustomPageURLRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/custom_pages/{identifier}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *UpdateCustomPageURLRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param identifier: (Required) */
 func (r *UpdateCustomPageURLRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 /* param url: 与自定义页面关联的URL。(Optional) */
 func (r *UpdateCustomPageURLRequest) SetUrl(url string) {
-    r.Url = &url
+	r.Url = &url
 }
 
 /* param state: 自定义页面状态(Optional) */
 func (r *UpdateCustomPageURLRequest) SetState(state string) {
-    r.State = &state
+	r.State = &state
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r UpdateCustomPageURLRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type UpdateCustomPageURLResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result UpdateCustomPageURLResult `json:"result"`
+	RequestID string                    `json:"requestId"`
+	Error     core.ErrorResponse        `json:"error"`
+	Result    UpdateCustomPageURLResult `json:"result"`
 }
 
 type UpdateCustomPageURLResult struct {
-    Data starshield.CustomPage `json:"data"`
+	Data starshield.CustomPage `json:"data"`
 }

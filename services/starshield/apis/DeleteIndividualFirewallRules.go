@@ -17,22 +17,21 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type DeleteIndividualFirewallRulesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Id string `json:"id"`
 
-    /*   */
-    Id string `json:"id"`
-
-    /*  (Optional) */
-    Delete_filter_if_unused *bool `json:"delete_filter_if_unused"`
+	/*  (Optional) */
+	Delete_filter_if_unused *bool `json:"delete_filter_if_unused"`
 }
 
 /*
@@ -42,19 +41,19 @@ type DeleteIndividualFirewallRulesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDeleteIndividualFirewallRulesRequest(
-    zone_identifier string,
-    id string,
+	zone_identifier string,
+	id string,
 ) *DeleteIndividualFirewallRulesRequest {
 
 	return &DeleteIndividualFirewallRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
 			Method:  "DELETE",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Id: id,
+		Zone_identifier: zone_identifier,
+		Id:              id,
 	}
 }
 
@@ -64,64 +63,64 @@ func NewDeleteIndividualFirewallRulesRequest(
  * param delete_filter_if_unused:  (Optional)
  */
 func NewDeleteIndividualFirewallRulesRequestWithAllParams(
-    zone_identifier string,
-    id string,
-    delete_filter_if_unused *bool,
+	zone_identifier string,
+	id string,
+	delete_filter_if_unused *bool,
 ) *DeleteIndividualFirewallRulesRequest {
 
-    return &DeleteIndividualFirewallRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Id: id,
-        Delete_filter_if_unused: delete_filter_if_unused,
-    }
+	return &DeleteIndividualFirewallRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier:         zone_identifier,
+		Id:                      id,
+		Delete_filter_if_unused: delete_filter_if_unused,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDeleteIndividualFirewallRulesRequestWithoutParam() *DeleteIndividualFirewallRulesRequest {
 
-    return &DeleteIndividualFirewallRulesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DeleteIndividualFirewallRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *DeleteIndividualFirewallRulesRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param id: (Required) */
 func (r *DeleteIndividualFirewallRulesRequest) SetId(id string) {
-    r.Id = id
+	r.Id = id
 }
 
 /* param delete_filter_if_unused: (Optional) */
 func (r *DeleteIndividualFirewallRulesRequest) SetDelete_filter_if_unused(delete_filter_if_unused bool) {
-    r.Delete_filter_if_unused = &delete_filter_if_unused
+	r.Delete_filter_if_unused = &delete_filter_if_unused
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DeleteIndividualFirewallRulesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type DeleteIndividualFirewallRulesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DeleteIndividualFirewallRulesResult `json:"result"`
+	RequestID string                              `json:"requestId"`
+	Error     core.ErrorResponse                  `json:"error"`
+	Result    DeleteIndividualFirewallRulesResult `json:"result"`
 }
 
 type DeleteIndividualFirewallRulesResult struct {
-    Data starshield.FirewallRule `json:"data"`
+	Data starshield.FirewallRule `json:"data"`
 }

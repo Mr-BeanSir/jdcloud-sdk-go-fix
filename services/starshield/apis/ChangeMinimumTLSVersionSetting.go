@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeMinimumTLSVersionSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* TLS协议版本 (Optional) */
-    Value *string `json:"value"`
+	/* TLS协议版本 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeMinimumTLSVersionSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeMinimumTLSVersionSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeMinimumTLSVersionSettingRequest {
 
 	return &ChangeMinimumTLSVersionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$min_tls_version",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeMinimumTLSVersionSettingRequest(
  * param value: TLS协议版本 (Optional)
  */
 func NewChangeMinimumTLSVersionSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeMinimumTLSVersionSettingRequest {
 
-    return &ChangeMinimumTLSVersionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$min_tls_version",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeMinimumTLSVersionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$min_tls_version",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeMinimumTLSVersionSettingRequestWithoutParam() *ChangeMinimumTLSVersionSettingRequest {
 
-    return &ChangeMinimumTLSVersionSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$min_tls_version",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeMinimumTLSVersionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$min_tls_version",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeMinimumTLSVersionSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: TLS协议版本(Optional) */
 func (r *ChangeMinimumTLSVersionSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeMinimumTLSVersionSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeMinimumTLSVersionSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeMinimumTLSVersionSettingResult `json:"result"`
+	RequestID string                               `json:"requestId"`
+	Error     core.ErrorResponse                   `json:"error"`
+	Result    ChangeMinimumTLSVersionSettingResult `json:"result"`
 }
 
 type ChangeMinimumTLSVersionSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

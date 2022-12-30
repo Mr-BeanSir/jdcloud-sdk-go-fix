@@ -17,46 +17,45 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListRulesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_id string `json:"zone_id"`
 
-    /*   */
-    Zone_id string `json:"zone_id"`
+	/*   */
+	Package_id string `json:"package_id"`
 
-    /*   */
-    Package_id string `json:"package_id"`
+	/* 已将规则覆盖到的设置 (Optional) */
+	Mode *string `json:"mode"`
 
-    /* 已将规则覆盖到的设置 (Optional) */
-    Mode *string `json:"mode"`
+	/* 在相关组中执行单个规则的顺序 (Optional) */
+	Priority *string `json:"priority"`
 
-    /* 在相关组中执行单个规则的顺序 (Optional) */
-    Priority *string `json:"priority"`
+	/* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
+	Match *string `json:"match"`
 
-    /* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
-    Match *string `json:"match"`
+	/* 按指定字段排序 (Optional) */
+	Order *string `json:"order"`
 
-    /* 按指定字段排序 (Optional) */
-    Order *string `json:"order"`
+	/* 分页结果的页码 (Optional) */
+	Page *int `json:"page"`
 
-    /* 分页结果的页码 (Optional) */
-    Page *int `json:"page"`
+	/* 每页的规则数 (Optional) */
+	Per_page *int `json:"per_page"`
 
-    /* 每页的规则数 (Optional) */
-    Per_page *int `json:"per_page"`
+	/* WAF组标识符标签 (Optional) */
+	Group_id *string `json:"group_id"`
 
-    /* WAF组标识符标签 (Optional) */
-    Group_id *string `json:"group_id"`
+	/* 规则的公开说明 (Optional) */
+	Description *string `json:"description"`
 
-    /* 规则的公开说明 (Optional) */
-    Description *string `json:"description"`
-
-    /* asc-升序；desc-降序 (Optional) */
-    Direction *string `json:"direction"`
+	/* asc-升序；desc-降序 (Optional) */
+	Direction *string `json:"direction"`
 }
 
 /*
@@ -66,19 +65,19 @@ type ListRulesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListRulesRequest(
-    zone_id string,
-    package_id string,
+	zone_id string,
+	package_id string,
 ) *ListRulesRequest {
 
 	return &ListRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_id: zone_id,
-        Package_id: package_id,
+		Zone_id:    zone_id,
+		Package_id: package_id,
 	}
 }
 
@@ -96,120 +95,120 @@ func NewListRulesRequest(
  * param direction: asc-升序；desc-降序 (Optional)
  */
 func NewListRulesRequestWithAllParams(
-    zone_id string,
-    package_id string,
-    mode *string,
-    priority *string,
-    match *string,
-    order *string,
-    page *int,
-    per_page *int,
-    group_id *string,
-    description *string,
-    direction *string,
+	zone_id string,
+	package_id string,
+	mode *string,
+	priority *string,
+	match *string,
+	order *string,
+	page *int,
+	per_page *int,
+	group_id *string,
+	description *string,
+	direction *string,
 ) *ListRulesRequest {
 
-    return &ListRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_id: zone_id,
-        Package_id: package_id,
-        Mode: mode,
-        Priority: priority,
-        Match: match,
-        Order: order,
-        Page: page,
-        Per_page: per_page,
-        Group_id: group_id,
-        Description: description,
-        Direction: direction,
-    }
+	return &ListRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_id:     zone_id,
+		Package_id:  package_id,
+		Mode:        mode,
+		Priority:    priority,
+		Match:       match,
+		Order:       order,
+		Page:        page,
+		Per_page:    per_page,
+		Group_id:    group_id,
+		Description: description,
+		Direction:   direction,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListRulesRequestWithoutParam() *ListRulesRequest {
 
-    return &ListRulesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_id}/firewall$$waf$$packages/{package_id}/rules",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_id: (Required) */
 func (r *ListRulesRequest) SetZone_id(zone_id string) {
-    r.Zone_id = zone_id
+	r.Zone_id = zone_id
 }
 
 /* param package_id: (Required) */
 func (r *ListRulesRequest) SetPackage_id(package_id string) {
-    r.Package_id = package_id
+	r.Package_id = package_id
 }
 
 /* param mode: 已将规则覆盖到的设置(Optional) */
 func (r *ListRulesRequest) SetMode(mode string) {
-    r.Mode = &mode
+	r.Mode = &mode
 }
 
 /* param priority: 在相关组中执行单个规则的顺序(Optional) */
 func (r *ListRulesRequest) SetPriority(priority string) {
-    r.Priority = &priority
+	r.Priority = &priority
 }
 
 /* param match: 是否匹配所有搜索要求或至少一个（任何）(Optional) */
 func (r *ListRulesRequest) SetMatch(match string) {
-    r.Match = &match
+	r.Match = &match
 }
 
 /* param order: 按指定字段排序(Optional) */
 func (r *ListRulesRequest) SetOrder(order string) {
-    r.Order = &order
+	r.Order = &order
 }
 
 /* param page: 分页结果的页码(Optional) */
 func (r *ListRulesRequest) SetPage(page int) {
-    r.Page = &page
+	r.Page = &page
 }
 
 /* param per_page: 每页的规则数(Optional) */
 func (r *ListRulesRequest) SetPer_page(per_page int) {
-    r.Per_page = &per_page
+	r.Per_page = &per_page
 }
 
 /* param group_id: WAF组标识符标签(Optional) */
 func (r *ListRulesRequest) SetGroup_id(group_id string) {
-    r.Group_id = &group_id
+	r.Group_id = &group_id
 }
 
 /* param description: 规则的公开说明(Optional) */
 func (r *ListRulesRequest) SetDescription(description string) {
-    r.Description = &description
+	r.Description = &description
 }
 
 /* param direction: asc-升序；desc-降序(Optional) */
 func (r *ListRulesRequest) SetDirection(direction string) {
-    r.Direction = &direction
+	r.Direction = &direction
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListRulesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListRulesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListRulesResult `json:"result"`
+	RequestID string             `json:"requestId"`
+	Error     core.ErrorResponse `json:"error"`
+	Result    ListRulesResult    `json:"result"`
 }
 
 type ListRulesResult struct {
-    DataList []starshield.WAFRule `json:"dataList"`
+	DataList []starshield.WAFRule `json:"dataList"`
 }

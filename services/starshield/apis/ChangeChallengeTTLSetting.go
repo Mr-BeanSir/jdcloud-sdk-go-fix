@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeChallengeTTLSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的有效值 (Optional) */
-    Value *int `json:"value"`
+	/* 该设置的有效值 (Optional) */
+	Value *int `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeChallengeTTLSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeChallengeTTLSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeChallengeTTLSettingRequest {
 
 	return &ChangeChallengeTTLSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$challenge_ttl",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeChallengeTTLSettingRequest(
  * param value: 该设置的有效值 (Optional)
  */
 func NewChangeChallengeTTLSettingRequestWithAllParams(
-    zone_identifier string,
-    value *int,
+	zone_identifier string,
+	value *int,
 ) *ChangeChallengeTTLSettingRequest {
 
-    return &ChangeChallengeTTLSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$challenge_ttl",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeChallengeTTLSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$challenge_ttl",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeChallengeTTLSettingRequestWithoutParam() *ChangeChallengeTTLSettingRequest {
 
-    return &ChangeChallengeTTLSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$challenge_ttl",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeChallengeTTLSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$challenge_ttl",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeChallengeTTLSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的有效值(Optional) */
 func (r *ChangeChallengeTTLSettingRequest) SetValue(value int) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeChallengeTTLSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeChallengeTTLSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeChallengeTTLSettingResult `json:"result"`
+	RequestID string                          `json:"requestId"`
+	Error     core.ErrorResponse              `json:"error"`
+	Result    ChangeChallengeTTLSettingResult `json:"result"`
 }
 
 type ChangeChallengeTTLSettingResult struct {
-    Data starshield.ChallengePageTTL `json:"data"`
+	Data starshield.ChallengePageTTL `json:"data"`
 }

@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeSecurityLevelSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的有效值 (Optional) */
-    Value *string `json:"value"`
+	/* 该设置的有效值 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeSecurityLevelSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeSecurityLevelSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeSecurityLevelSettingRequest {
 
 	return &ChangeSecurityLevelSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$security_level",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeSecurityLevelSettingRequest(
  * param value: 该设置的有效值 (Optional)
  */
 func NewChangeSecurityLevelSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeSecurityLevelSettingRequest {
 
-    return &ChangeSecurityLevelSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$security_level",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeSecurityLevelSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$security_level",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeSecurityLevelSettingRequestWithoutParam() *ChangeSecurityLevelSettingRequest {
 
-    return &ChangeSecurityLevelSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$security_level",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeSecurityLevelSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$security_level",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeSecurityLevelSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的有效值(Optional) */
 func (r *ChangeSecurityLevelSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeSecurityLevelSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeSecurityLevelSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeSecurityLevelSettingResult `json:"result"`
+	RequestID string                           `json:"requestId"`
+	Error     core.ErrorResponse               `json:"error"`
+	Result    ChangeSecurityLevelSettingResult `json:"result"`
 }
 
 type ChangeSecurityLevelSettingResult struct {
-    Data starshield.SecurityLevel `json:"data"`
+	Data starshield.SecurityLevel `json:"data"`
 }

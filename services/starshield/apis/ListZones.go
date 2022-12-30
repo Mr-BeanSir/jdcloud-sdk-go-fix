@@ -17,52 +17,50 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListZonesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
+	Match *string `json:"match"`
 
-    /* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
-    Match *string `json:"match"`
+	/* 域名 (Optional) */
+	Name *string `json:"name"`
 
-    /* 域名 (Optional) */
-    Name *string `json:"name"`
+	/* 帐户名 (Optional) */
+	__account__name *string `json:"__account__name"`
 
-    /* 帐户名 (Optional) */
-    __account__name *string `json:"__account__name"`
+	/* 按字段对域进行排序 (Optional) */
+	Order *string `json:"order"`
 
-    /* 按字段对域进行排序 (Optional) */
-    Order *string `json:"order"`
+	/* 分页结果的页码 (Optional) */
+	Page *int `json:"page"`
 
-    /* 分页结果的页码 (Optional) */
-    Page *int `json:"page"`
+	/* 每页的域数 (Optional) */
+	Per_page *int `json:"per_page"`
 
-    /* 每页的域数 (Optional) */
-    Per_page *int `json:"per_page"`
+	/* 域的状态 (Optional) */
+	Status *string `json:"status"`
 
-    /* 域的状态 (Optional) */
-    Status *string `json:"status"`
+	/* 帐户标识符标签 (Optional) */
+	__account__id *string `json:"__account__id"`
+	Account__id   *string `json:"__account__id"`
 
-    /* 帐户标识符标签 (Optional) */
-    __account__id *string `json:"__account__id"`
-    Account__id *string `json:"__account__id"`
-
-    /* asc - 升序；desc - 降序 (Optional) */
-    Direction *string `json:"direction"`
+	/* asc - 升序；desc - 降序 (Optional) */
+	Direction *string `json:"direction"`
 }
 
 /*
  *
  * @Deprecated, not compatible when mandatory parameters changed
  */
-func NewListZonesRequest(
-) *ListZonesRequest {
+func NewListZonesRequest() *ListZonesRequest {
 
 	return &ListZonesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones",
 			Method:  "GET",
 			Header:  nil,
@@ -83,106 +81,106 @@ func NewListZonesRequest(
  * param direction: asc - 升序；desc - 降序 (Optional)
  */
 func NewListZonesRequestWithAllParams(
-    match *string,
-    name *string,
-    __account__name *string,
-    order *string,
-    page *int,
-    per_page *int,
-    status *string,
-    __account__id *string,
-    direction *string,
+	match *string,
+	name *string,
+	__account__name *string,
+	order *string,
+	page *int,
+	per_page *int,
+	status *string,
+	__account__id *string,
+	direction *string,
 ) *ListZonesRequest {
 
-    return &ListZonesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Match: match,
-        Name: name,
-        __account__name: __account__name,
-        Order: order,
-        Page: page,
-        Per_page: per_page,
-        Status: status,
-        __account__id: __account__id,
-        Direction: direction,
-    }
+	return &ListZonesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Match:           match,
+		Name:            name,
+		__account__name: __account__name,
+		Order:           order,
+		Page:            page,
+		Per_page:        per_page,
+		Status:          status,
+		__account__id:   __account__id,
+		Direction:       direction,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListZonesRequestWithoutParam() *ListZonesRequest {
 
-    return &ListZonesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListZonesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param match: 是否匹配所有搜索要求或至少一个（任何）(Optional) */
 func (r *ListZonesRequest) SetMatch(match string) {
-    r.Match = &match
+	r.Match = &match
 }
 
 /* param name: 域名(Optional) */
 func (r *ListZonesRequest) SetName(name string) {
-    r.Name = &name
+	r.Name = &name
 }
 
 /* param __account__name: 帐户名(Optional) */
 func (r *ListZonesRequest) Set__account__name(__account__name string) {
-    r.__account__name = &__account__name
+	r.__account__name = &__account__name
 }
 
 /* param order: 按字段对域进行排序(Optional) */
 func (r *ListZonesRequest) SetOrder(order string) {
-    r.Order = &order
+	r.Order = &order
 }
 
 /* param page: 分页结果的页码(Optional) */
 func (r *ListZonesRequest) SetPage(page int) {
-    r.Page = &page
+	r.Page = &page
 }
 
 /* param per_page: 每页的域数(Optional) */
 func (r *ListZonesRequest) SetPer_page(per_page int) {
-    r.Per_page = &per_page
+	r.Per_page = &per_page
 }
 
 /* param status: 域的状态(Optional) */
 func (r *ListZonesRequest) SetStatus(status string) {
-    r.Status = &status
+	r.Status = &status
 }
 
 /* param __account__id: 帐户标识符标签(Optional) */
 func (r *ListZonesRequest) Set__account__id(__account__id string) {
-    r.Account__id = &__account__id
+	r.Account__id = &__account__id
 }
 
 /* param direction: asc - 升序；desc - 降序(Optional) */
 func (r *ListZonesRequest) SetDirection(direction string) {
-    r.Direction = &direction
+	r.Direction = &direction
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListZonesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListZonesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListZonesResult `json:"result"`
+	RequestID string             `json:"requestId"`
+	Error     core.ErrorResponse `json:"error"`
+	Result    ListZonesResult    `json:"result"`
 }
 
 type ListZonesResult struct {
-    DataList []starshield.Zone `json:"dataList"`
+	DataList []starshield.Zone `json:"dataList"`
 }

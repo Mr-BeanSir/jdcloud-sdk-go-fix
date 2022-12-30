@@ -17,15 +17,14 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type OpenFirewallBotRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    ZoneId string `json:"zoneId"`
+	/*   */
+	ZoneId string `json:"zoneId"`
 }
 
 /*
@@ -34,17 +33,17 @@ type OpenFirewallBotRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewOpenFirewallBotRequest(
-    zoneId string,
+	zoneId string,
 ) *OpenFirewallBotRequest {
 
 	return &OpenFirewallBotRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/bot/{zoneId}",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        ZoneId: zoneId,
+		ZoneId: zoneId,
 	}
 }
 
@@ -52,50 +51,50 @@ func NewOpenFirewallBotRequest(
  * param zoneId:  (Required)
  */
 func NewOpenFirewallBotRequestWithAllParams(
-    zoneId string,
+	zoneId string,
 ) *OpenFirewallBotRequest {
 
-    return &OpenFirewallBotRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/bot/{zoneId}",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        ZoneId: zoneId,
-    }
+	return &OpenFirewallBotRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/bot/{zoneId}",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		ZoneId: zoneId,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewOpenFirewallBotRequestWithoutParam() *OpenFirewallBotRequest {
 
-    return &OpenFirewallBotRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/bot/{zoneId}",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &OpenFirewallBotRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/bot/{zoneId}",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zoneId: (Required) */
 func (r *OpenFirewallBotRequest) SetZoneId(zoneId string) {
-    r.ZoneId = zoneId
+	r.ZoneId = zoneId
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r OpenFirewallBotRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type OpenFirewallBotResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result OpenFirewallBotResult `json:"result"`
+	RequestID string                `json:"requestId"`
+	Error     core.ErrorResponse    `json:"error"`
+	Result    OpenFirewallBotResult `json:"result"`
 }
 
 type OpenFirewallBotResult struct {
-    Success bool `json:"success"`
+	Success bool `json:"success"`
 }

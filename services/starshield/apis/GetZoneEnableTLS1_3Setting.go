@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetZoneEnableTLS1_3SettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetZoneEnableTLS1_3SettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetZoneEnableTLS1_3SettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetZoneEnableTLS1_3SettingRequest {
 
 	return &GetZoneEnableTLS1_3SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$tls_1_3",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetZoneEnableTLS1_3SettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetZoneEnableTLS1_3SettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetZoneEnableTLS1_3SettingRequest {
 
-    return &GetZoneEnableTLS1_3SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$tls_1_3",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetZoneEnableTLS1_3SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$tls_1_3",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetZoneEnableTLS1_3SettingRequestWithoutParam() *GetZoneEnableTLS1_3SettingRequest {
 
-    return &GetZoneEnableTLS1_3SettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$tls_1_3",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetZoneEnableTLS1_3SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$tls_1_3",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetZoneEnableTLS1_3SettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetZoneEnableTLS1_3SettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetZoneEnableTLS1_3SettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetZoneEnableTLS1_3SettingResult `json:"result"`
+	RequestID string                           `json:"requestId"`
+	Error     core.ErrorResponse               `json:"error"`
+	Result    GetZoneEnableTLS1_3SettingResult `json:"result"`
 }
 
 type GetZoneEnableTLS1_3SettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

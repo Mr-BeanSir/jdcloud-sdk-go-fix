@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeMobileRedirectSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*  (Optional) */
-    Value *starshield.Value_0 `json:"value"`
+	/*  (Optional) */
+	Value *starshield.Value_0 `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeMobileRedirectSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeMobileRedirectSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeMobileRedirectSettingRequest {
 
 	return &ChangeMobileRedirectSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeMobileRedirectSettingRequest(
  * param value:  (Optional)
  */
 func NewChangeMobileRedirectSettingRequestWithAllParams(
-    zone_identifier string,
-    value *starshield.Value_0,
+	zone_identifier string,
+	value *starshield.Value_0,
 ) *ChangeMobileRedirectSettingRequest {
 
-    return &ChangeMobileRedirectSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeMobileRedirectSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeMobileRedirectSettingRequestWithoutParam() *ChangeMobileRedirectSettingRequest {
 
-    return &ChangeMobileRedirectSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeMobileRedirectSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeMobileRedirectSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: (Optional) */
 func (r *ChangeMobileRedirectSettingRequest) SetValue(value *starshield.Value_0) {
-    r.Value = value
+	r.Value = value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeMobileRedirectSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeMobileRedirectSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeMobileRedirectSettingResult `json:"result"`
+	RequestID string                            `json:"requestId"`
+	Error     core.ErrorResponse                `json:"error"`
+	Result    ChangeMobileRedirectSettingResult `json:"result"`
 }
 
 type ChangeMobileRedirectSettingResult struct {
-    Data starshield.MobileRedirect `json:"data"`
+	Data starshield.MobileRedirect `json:"data"`
 }

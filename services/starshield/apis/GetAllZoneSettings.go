@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetAllZoneSettingsRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetAllZoneSettingsRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetAllZoneSettingsRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAllZoneSettingsRequest {
 
 	return &GetAllZoneSettingsRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetAllZoneSettingsRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetAllZoneSettingsRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAllZoneSettingsRequest {
 
-    return &GetAllZoneSettingsRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetAllZoneSettingsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetAllZoneSettingsRequestWithoutParam() *GetAllZoneSettingsRequest {
 
-    return &GetAllZoneSettingsRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetAllZoneSettingsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetAllZoneSettingsRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetAllZoneSettingsRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetAllZoneSettingsResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetAllZoneSettingsResult `json:"result"`
+	RequestID string                   `json:"requestId"`
+	Error     core.ErrorResponse       `json:"error"`
+	Result    GetAllZoneSettingsResult `json:"result"`
 }
 
 type GetAllZoneSettingsResult struct {
-    DataList []starshield.ZoneSetting `json:"dataList"`
+	DataList []starshield.ZoneSetting `json:"dataList"`
 }

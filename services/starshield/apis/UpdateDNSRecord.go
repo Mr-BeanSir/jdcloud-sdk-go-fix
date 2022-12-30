@@ -17,43 +17,42 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type UpdateDNSRecordRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 
-    /*   */
-    Identifier string `json:"identifier"`
+	/* DNS记录类型 (Optional) */
+	Ty_pe *string `json:"ty_pe"`
 
-    /* DNS记录类型 (Optional) */
-    Ty_pe *string `json:"ty_pe"`
+	/* DNS记录名称  */
+	Name string `json:"name"`
 
-    /* DNS记录名称  */
-    Name string `json:"name"`
+	/* DNS记录内容  */
+	Content string `json:"content"`
 
-    /* DNS记录内容  */
-    Content string `json:"content"`
+	/* DNS记录的生存时间。值为1是 "自动"。  */
+	Ttl int `json:"ttl"`
 
-    /* DNS记录的生存时间。值为1是 "自动"。  */
-    Ttl int `json:"ttl"`
+	/* 是否利用星盾的性能和安全优势 (Optional) */
+	Proxied *bool `json:"proxied"`
 
-    /* 是否利用星盾的性能和安全优势 (Optional) */
-    Proxied *bool `json:"proxied"`
+	/* 如果是MX记录，该属性是必需的 (Optional) */
+	Priority *int `json:"priority"`
 
-    /* 如果是MX记录，该属性是必需的 (Optional) */
-    Priority *int `json:"priority"`
+	/*  (Optional) */
+	SrvData *starshield.SRVdata `json:"srvData"`
 
-    /*  (Optional) */
-    SrvData *starshield.SRVdata `json:"srvData"`
-
-    /*  (Optional) */
-    CaaData *starshield.CAAdata `json:"caaData"`
+	/*  (Optional) */
+	CaaData *starshield.CAAdata `json:"caaData"`
 }
 
 /*
@@ -66,25 +65,25 @@ type UpdateDNSRecordRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewUpdateDNSRecordRequest(
-    zone_identifier string,
-    identifier string,
-    name string,
-    content string,
-    ttl int,
+	zone_identifier string,
+	identifier string,
+	name string,
+	content string,
+	ttl int,
 ) *UpdateDNSRecordRequest {
 
 	return &UpdateDNSRecordRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/dns_records/{identifier}",
 			Method:  "PUT",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
-        Name: name,
-        Content: content,
-        Ttl: ttl,
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
+		Name:            name,
+		Content:         content,
+		Ttl:             ttl,
 	}
 }
 
@@ -101,113 +100,113 @@ func NewUpdateDNSRecordRequest(
  * param caaData:  (Optional)
  */
 func NewUpdateDNSRecordRequestWithAllParams(
-    zone_identifier string,
-    identifier string,
-    ty_pe *string,
-    name string,
-    content string,
-    ttl int,
-    proxied *bool,
-    priority *int,
-    srvData *starshield.SRVdata,
-    caaData *starshield.CAAdata,
+	zone_identifier string,
+	identifier string,
+	ty_pe *string,
+	name string,
+	content string,
+	ttl int,
+	proxied *bool,
+	priority *int,
+	srvData *starshield.SRVdata,
+	caaData *starshield.CAAdata,
 ) *UpdateDNSRecordRequest {
 
-    return &UpdateDNSRecordRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/dns_records/{identifier}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
-        Ty_pe: ty_pe,
-        Name: name,
-        Content: content,
-        Ttl: ttl,
-        Proxied: proxied,
-        Priority: priority,
-        SrvData: srvData,
-        CaaData: caaData,
-    }
+	return &UpdateDNSRecordRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/dns_records/{identifier}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
+		Ty_pe:           ty_pe,
+		Name:            name,
+		Content:         content,
+		Ttl:             ttl,
+		Proxied:         proxied,
+		Priority:        priority,
+		SrvData:         srvData,
+		CaaData:         caaData,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewUpdateDNSRecordRequestWithoutParam() *UpdateDNSRecordRequest {
 
-    return &UpdateDNSRecordRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/dns_records/{identifier}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &UpdateDNSRecordRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/dns_records/{identifier}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *UpdateDNSRecordRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param identifier: (Required) */
 func (r *UpdateDNSRecordRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 /* param ty_pe: DNS记录类型(Optional) */
 func (r *UpdateDNSRecordRequest) SetTy_pe(ty_pe string) {
-    r.Ty_pe = &ty_pe
+	r.Ty_pe = &ty_pe
 }
 
 /* param name: DNS记录名称(Required) */
 func (r *UpdateDNSRecordRequest) SetName(name string) {
-    r.Name = name
+	r.Name = name
 }
 
 /* param content: DNS记录内容(Required) */
 func (r *UpdateDNSRecordRequest) SetContent(content string) {
-    r.Content = content
+	r.Content = content
 }
 
 /* param ttl: DNS记录的生存时间。值为1是 "自动"。(Required) */
 func (r *UpdateDNSRecordRequest) SetTtl(ttl int) {
-    r.Ttl = ttl
+	r.Ttl = ttl
 }
 
 /* param proxied: 是否利用星盾的性能和安全优势(Optional) */
 func (r *UpdateDNSRecordRequest) SetProxied(proxied bool) {
-    r.Proxied = &proxied
+	r.Proxied = &proxied
 }
 
 /* param priority: 如果是MX记录，该属性是必需的(Optional) */
 func (r *UpdateDNSRecordRequest) SetPriority(priority int) {
-    r.Priority = &priority
+	r.Priority = &priority
 }
 
 /* param srvData: (Optional) */
 func (r *UpdateDNSRecordRequest) SetSrvData(srvData *starshield.SRVdata) {
-    r.SrvData = srvData
+	r.SrvData = srvData
 }
 
 /* param caaData: (Optional) */
 func (r *UpdateDNSRecordRequest) SetCaaData(caaData *starshield.CAAdata) {
-    r.CaaData = caaData
+	r.CaaData = caaData
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r UpdateDNSRecordRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type UpdateDNSRecordResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result UpdateDNSRecordResult `json:"result"`
+	RequestID string                `json:"requestId"`
+	Error     core.ErrorResponse    `json:"error"`
+	Result    UpdateDNSRecordResult `json:"result"`
 }
 
 type UpdateDNSRecordResult struct {
-    Data starshield.DnsRecord `json:"data"`
+	Data starshield.DnsRecord `json:"data"`
 }

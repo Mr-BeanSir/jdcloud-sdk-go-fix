@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeWebApplicationFirewallWAFSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeWebApplicationFirewallWAFSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeWebApplicationFirewallWAFSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeWebApplicationFirewallWAFSettingRequest {
 
 	return &ChangeWebApplicationFirewallWAFSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$waf",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeWebApplicationFirewallWAFSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeWebApplicationFirewallWAFSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeWebApplicationFirewallWAFSettingRequest {
 
-    return &ChangeWebApplicationFirewallWAFSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$waf",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeWebApplicationFirewallWAFSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$waf",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeWebApplicationFirewallWAFSettingRequestWithoutParam() *ChangeWebApplicationFirewallWAFSettingRequest {
 
-    return &ChangeWebApplicationFirewallWAFSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$waf",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeWebApplicationFirewallWAFSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$waf",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeWebApplicationFirewallWAFSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeWebApplicationFirewallWAFSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeWebApplicationFirewallWAFSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeWebApplicationFirewallWAFSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeWebApplicationFirewallWAFSettingResult `json:"result"`
+	RequestID string                                       `json:"requestId"`
+	Error     core.ErrorResponse                           `json:"error"`
+	Result    ChangeWebApplicationFirewallWAFSettingResult `json:"result"`
 }
 
 type ChangeWebApplicationFirewallWAFSettingResult struct {
-    Data starshield.WebApplicationFirewall `json:"data"`
+	Data starshield.WebApplicationFirewall `json:"data"`
 }

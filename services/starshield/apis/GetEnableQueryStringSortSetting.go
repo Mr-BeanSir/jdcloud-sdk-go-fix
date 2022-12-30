@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetEnableQueryStringSortSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetEnableQueryStringSortSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetEnableQueryStringSortSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetEnableQueryStringSortSettingRequest {
 
 	return &GetEnableQueryStringSortSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetEnableQueryStringSortSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetEnableQueryStringSortSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetEnableQueryStringSortSettingRequest {
 
-    return &GetEnableQueryStringSortSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetEnableQueryStringSortSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetEnableQueryStringSortSettingRequestWithoutParam() *GetEnableQueryStringSortSettingRequest {
 
-    return &GetEnableQueryStringSortSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetEnableQueryStringSortSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$sort_query_string_for_cache",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetEnableQueryStringSortSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetEnableQueryStringSortSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetEnableQueryStringSortSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetEnableQueryStringSortSettingResult `json:"result"`
+	RequestID string                                `json:"requestId"`
+	Error     core.ErrorResponse                    `json:"error"`
+	Result    GetEnableQueryStringSortSettingResult `json:"result"`
 }
 
 type GetEnableQueryStringSortSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

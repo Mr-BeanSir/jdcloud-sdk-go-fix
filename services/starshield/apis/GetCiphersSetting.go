@@ -17,15 +17,14 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type GetCiphersSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -34,17 +33,17 @@ type GetCiphersSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetCiphersSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetCiphersSettingRequest {
 
 	return &GetCiphersSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$ciphers",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -52,50 +51,50 @@ func NewGetCiphersSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetCiphersSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetCiphersSettingRequest {
 
-    return &GetCiphersSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ciphers",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetCiphersSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ciphers",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetCiphersSettingRequestWithoutParam() *GetCiphersSettingRequest {
 
-    return &GetCiphersSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ciphers",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetCiphersSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ciphers",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetCiphersSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetCiphersSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetCiphersSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetCiphersSettingResult `json:"result"`
+	RequestID string                  `json:"requestId"`
+	Error     core.ErrorResponse      `json:"error"`
+	Result    GetCiphersSettingResult `json:"result"`
 }
 
 type GetCiphersSettingResult struct {
-    DataList []string `json:"dataList"`
+	DataList []string `json:"dataList"`
 }

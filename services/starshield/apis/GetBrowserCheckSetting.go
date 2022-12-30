@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetBrowserCheckSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetBrowserCheckSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetBrowserCheckSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetBrowserCheckSettingRequest {
 
 	return &GetBrowserCheckSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$browser_check",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetBrowserCheckSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetBrowserCheckSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetBrowserCheckSettingRequest {
 
-    return &GetBrowserCheckSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$browser_check",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetBrowserCheckSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$browser_check",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetBrowserCheckSettingRequestWithoutParam() *GetBrowserCheckSettingRequest {
 
-    return &GetBrowserCheckSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$browser_check",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetBrowserCheckSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$browser_check",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetBrowserCheckSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetBrowserCheckSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetBrowserCheckSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetBrowserCheckSettingResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    GetBrowserCheckSettingResult `json:"result"`
 }
 
 type GetBrowserCheckSettingResult struct {
-    Data starshield.BrowserCheck `json:"data"`
+	Data starshield.BrowserCheck `json:"data"`
 }

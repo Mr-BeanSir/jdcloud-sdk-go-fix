@@ -17,108 +17,114 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type PurgeAllFilesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Identifier string `json:"identifier"`
 
-    /*   */
-    Identifier string `json:"identifier"`
-
-    /* 指示星盾缓存中的所有资源都应该删除的标志。
-注意，执行此操作后，可能会对源服务器负载产生显著影响。
-  */
-    Purge_everything bool `json:"purge_everything"`
+	/* 指示星盾缓存中的所有资源都应该删除的标志。
+	注意，执行此操作后，可能会对源服务器负载产生显著影响。
+	*/
+	Purge_everything bool `json:"purge_everything"`
 }
 
 /*
- * param identifier:  (Required)
- * param purge_everything: 指示星盾缓存中的所有资源都应该删除的标志。
+  - param identifier:  (Required)
+  - param purge_everything: 指示星盾缓存中的所有资源都应该删除的标志。
+
 注意，执行此操作后，可能会对源服务器负载产生显著影响。
- (Required)
- *
- * @Deprecated, not compatible when mandatory parameters changed
- */
+
+	(Required)
+	*
+	* @Deprecated, not compatible when mandatory parameters changed
+*/
 func NewPurgeAllFilesRequest(
-    identifier string,
-    purge_everything bool,
+	identifier string,
+	purge_everything bool,
 ) *PurgeAllFilesRequest {
 
 	return &PurgeAllFilesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{identifier}/purge_cache__purgeAllFiles",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Identifier: identifier,
-        Purge_everything: purge_everything,
+		Identifier:       identifier,
+		Purge_everything: purge_everything,
 	}
 }
 
 /*
- * param identifier:  (Required)
- * param purge_everything: 指示星盾缓存中的所有资源都应该删除的标志。
+  - param identifier:  (Required)
+  - param purge_everything: 指示星盾缓存中的所有资源都应该删除的标志。
+
 注意，执行此操作后，可能会对源服务器负载产生显著影响。
- (Required)
- */
+
+	(Required)
+*/
 func NewPurgeAllFilesRequestWithAllParams(
-    identifier string,
-    purge_everything bool,
+	identifier string,
+	purge_everything bool,
 ) *PurgeAllFilesRequest {
 
-    return &PurgeAllFilesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}/purge_cache__purgeAllFiles",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Identifier: identifier,
-        Purge_everything: purge_everything,
-    }
+	return &PurgeAllFilesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}/purge_cache__purgeAllFiles",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Identifier:       identifier,
+		Purge_everything: purge_everything,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewPurgeAllFilesRequestWithoutParam() *PurgeAllFilesRequest {
 
-    return &PurgeAllFilesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}/purge_cache__purgeAllFiles",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &PurgeAllFilesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}/purge_cache__purgeAllFiles",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param identifier: (Required) */
 func (r *PurgeAllFilesRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
-/* param purge_everything: 指示星盾缓存中的所有资源都应该删除的标志。
+/*
+	param purge_everything: 指示星盾缓存中的所有资源都应该删除的标志。
+
 注意，执行此操作后，可能会对源服务器负载产生显著影响。
-(Required) */
+(Required)
+*/
 func (r *PurgeAllFilesRequest) SetPurge_everything(purge_everything bool) {
-    r.Purge_everything = purge_everything
+	r.Purge_everything = purge_everything
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r PurgeAllFilesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type PurgeAllFilesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result PurgeAllFilesResult `json:"result"`
+	RequestID string              `json:"requestId"`
+	Error     core.ErrorResponse  `json:"error"`
+	Result    PurgeAllFilesResult `json:"result"`
 }
 
 type PurgeAllFilesResult struct {
-    Data starshield.Zone `json:"data"`
+	Data starshield.Zone `json:"data"`
 }

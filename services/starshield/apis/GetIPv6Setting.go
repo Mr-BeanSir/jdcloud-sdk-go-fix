@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetIPv6SettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetIPv6SettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetIPv6SettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetIPv6SettingRequest {
 
 	return &GetIPv6SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$ipv6",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetIPv6SettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetIPv6SettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetIPv6SettingRequest {
 
-    return &GetIPv6SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ipv6",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetIPv6SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ipv6",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetIPv6SettingRequestWithoutParam() *GetIPv6SettingRequest {
 
-    return &GetIPv6SettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$ipv6",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetIPv6SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$ipv6",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetIPv6SettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetIPv6SettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetIPv6SettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetIPv6SettingResult `json:"result"`
+	RequestID string               `json:"requestId"`
+	Error     core.ErrorResponse   `json:"error"`
+	Result    GetIPv6SettingResult `json:"result"`
 }
 
 type GetIPv6SettingResult struct {
-    Data starshield.IPv6 `json:"data"`
+	Data starshield.IPv6 `json:"data"`
 }

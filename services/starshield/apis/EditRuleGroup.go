@@ -17,25 +17,24 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type EditRuleGroupRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Package_identifier string `json:"package_identifier"`
 
-    /*   */
-    Package_identifier string `json:"package_identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 
-    /*   */
-    Identifier string `json:"identifier"`
-
-    /* 该组中包含的规则是否可配置/可使用 (Optional) */
-    Mode *string `json:"mode"`
+	/* 该组中包含的规则是否可配置/可使用 (Optional) */
+	Mode *string `json:"mode"`
 }
 
 /*
@@ -46,21 +45,21 @@ type EditRuleGroupRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewEditRuleGroupRequest(
-    zone_identifier string,
-    package_identifier string,
-    identifier string,
+	zone_identifier string,
+	package_identifier string,
+	identifier string,
 ) *EditRuleGroupRequest {
 
 	return &EditRuleGroupRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Package_identifier: package_identifier,
-        Identifier: identifier,
+		Zone_identifier:    zone_identifier,
+		Package_identifier: package_identifier,
+		Identifier:         identifier,
 	}
 }
 
@@ -71,71 +70,71 @@ func NewEditRuleGroupRequest(
  * param mode: 该组中包含的规则是否可配置/可使用 (Optional)
  */
 func NewEditRuleGroupRequestWithAllParams(
-    zone_identifier string,
-    package_identifier string,
-    identifier string,
-    mode *string,
+	zone_identifier string,
+	package_identifier string,
+	identifier string,
+	mode *string,
 ) *EditRuleGroupRequest {
 
-    return &EditRuleGroupRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Package_identifier: package_identifier,
-        Identifier: identifier,
-        Mode: mode,
-    }
+	return &EditRuleGroupRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier:    zone_identifier,
+		Package_identifier: package_identifier,
+		Identifier:         identifier,
+		Mode:               mode,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewEditRuleGroupRequestWithoutParam() *EditRuleGroupRequest {
 
-    return &EditRuleGroupRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &EditRuleGroupRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *EditRuleGroupRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param package_identifier: (Required) */
 func (r *EditRuleGroupRequest) SetPackage_identifier(package_identifier string) {
-    r.Package_identifier = package_identifier
+	r.Package_identifier = package_identifier
 }
 
 /* param identifier: (Required) */
 func (r *EditRuleGroupRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 /* param mode: 该组中包含的规则是否可配置/可使用(Optional) */
 func (r *EditRuleGroupRequest) SetMode(mode string) {
-    r.Mode = &mode
+	r.Mode = &mode
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r EditRuleGroupRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type EditRuleGroupResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result EditRuleGroupResult `json:"result"`
+	RequestID string              `json:"requestId"`
+	Error     core.ErrorResponse  `json:"error"`
+	Result    EditRuleGroupResult `json:"result"`
 }
 
 type EditRuleGroupResult struct {
-    Data starshield.WAFRuleGroup `json:"data"`
+	Data starshield.WAFRuleGroup `json:"data"`
 }

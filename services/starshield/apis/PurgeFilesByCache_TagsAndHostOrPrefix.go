@@ -17,27 +17,26 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type PurgeFilesByCache_TagsAndHostOrPrefixRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Identifier string `json:"identifier"`
 
-    /*   */
-    Identifier string `json:"identifier"`
+	/* 如何资产携带Cache-Tag头，并且它的值与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional) */
+	Tags []string `json:"tags"`
 
-    /* 如何资产携带Cache-Tag头，并且它的值与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional) */
-    Tags []string `json:"tags"`
+	/* 如果资产的URL中的host与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional) */
+	Hosts []string `json:"hosts"`
 
-    /* 如果资产的URL中的host与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional) */
-    Hosts []string `json:"hosts"`
-
-    /* URL上与前缀匹配的任何资产都将从星盾缓存中清除。
-例如, a.com/b 意味着 a.com/b/c/d.png 会被删除，而 a.com/bc.png 不会被删除。前缀a.com/b和a.com/b/c是冗余的。
- (Optional) */
-    Prefixes []string `json:"prefixes"`
+	/* URL上与前缀匹配的任何资产都将从星盾缓存中清除。
+	例如, a.com/b 意味着 a.com/b/c/d.png 会被删除，而 a.com/bc.png 不会被删除。前缀a.com/b和a.com/b/c是冗余的。
+	 (Optional) */
+	Prefixes []string `json:"prefixes"`
 }
 
 /*
@@ -46,96 +45,101 @@ type PurgeFilesByCache_TagsAndHostOrPrefixRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewPurgeFilesByCache_TagsAndHostOrPrefixRequest(
-    identifier string,
+	identifier string,
 ) *PurgeFilesByCache_TagsAndHostOrPrefixRequest {
 
 	return &PurgeFilesByCache_TagsAndHostOrPrefixRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{identifier}/purge_cache__purgeFilesByCache_TagsAndHostOrPrefix",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Identifier: identifier,
+		Identifier: identifier,
 	}
 }
 
 /*
- * param identifier:  (Required)
- * param tags: 如何资产携带Cache-Tag头，并且它的值与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional)
- * param hosts: 如果资产的URL中的host与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional)
- * param prefixes: URL上与前缀匹配的任何资产都将从星盾缓存中清除。
+  - param identifier:  (Required)
+  - param tags: 如何资产携带Cache-Tag头，并且它的值与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional)
+  - param hosts: 如果资产的URL中的host与提供的值之一匹配的话，该资产将从星盾缓存中清除 (Optional)
+  - param prefixes: URL上与前缀匹配的任何资产都将从星盾缓存中清除。
+
 例如, a.com/b 意味着 a.com/b/c/d.png 会被删除，而 a.com/bc.png 不会被删除。前缀a.com/b和a.com/b/c是冗余的。
- (Optional)
- */
+
+	(Optional)
+*/
 func NewPurgeFilesByCache_TagsAndHostOrPrefixRequestWithAllParams(
-    identifier string,
-    tags []string,
-    hosts []string,
-    prefixes []string,
+	identifier string,
+	tags []string,
+	hosts []string,
+	prefixes []string,
 ) *PurgeFilesByCache_TagsAndHostOrPrefixRequest {
 
-    return &PurgeFilesByCache_TagsAndHostOrPrefixRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}/purge_cache__purgeFilesByCache_TagsAndHostOrPrefix",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Identifier: identifier,
-        Tags: tags,
-        Hosts: hosts,
-        Prefixes: prefixes,
-    }
+	return &PurgeFilesByCache_TagsAndHostOrPrefixRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}/purge_cache__purgeFilesByCache_TagsAndHostOrPrefix",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Identifier: identifier,
+		Tags:       tags,
+		Hosts:      hosts,
+		Prefixes:   prefixes,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewPurgeFilesByCache_TagsAndHostOrPrefixRequestWithoutParam() *PurgeFilesByCache_TagsAndHostOrPrefixRequest {
 
-    return &PurgeFilesByCache_TagsAndHostOrPrefixRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}/purge_cache__purgeFilesByCache_TagsAndHostOrPrefix",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &PurgeFilesByCache_TagsAndHostOrPrefixRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}/purge_cache__purgeFilesByCache_TagsAndHostOrPrefix",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param identifier: (Required) */
 func (r *PurgeFilesByCache_TagsAndHostOrPrefixRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 /* param tags: 如何资产携带Cache-Tag头，并且它的值与提供的值之一匹配的话，该资产将从星盾缓存中清除(Optional) */
 func (r *PurgeFilesByCache_TagsAndHostOrPrefixRequest) SetTags(tags []string) {
-    r.Tags = tags
+	r.Tags = tags
 }
 
 /* param hosts: 如果资产的URL中的host与提供的值之一匹配的话，该资产将从星盾缓存中清除(Optional) */
 func (r *PurgeFilesByCache_TagsAndHostOrPrefixRequest) SetHosts(hosts []string) {
-    r.Hosts = hosts
+	r.Hosts = hosts
 }
 
-/* param prefixes: URL上与前缀匹配的任何资产都将从星盾缓存中清除。
+/*
+	param prefixes: URL上与前缀匹配的任何资产都将从星盾缓存中清除。
+
 例如, a.com/b 意味着 a.com/b/c/d.png 会被删除，而 a.com/bc.png 不会被删除。前缀a.com/b和a.com/b/c是冗余的。
-(Optional) */
+(Optional)
+*/
 func (r *PurgeFilesByCache_TagsAndHostOrPrefixRequest) SetPrefixes(prefixes []string) {
-    r.Prefixes = prefixes
+	r.Prefixes = prefixes
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r PurgeFilesByCache_TagsAndHostOrPrefixRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type PurgeFilesByCache_TagsAndHostOrPrefixResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result PurgeFilesByCache_TagsAndHostOrPrefixResult `json:"result"`
+	RequestID string                                      `json:"requestId"`
+	Error     core.ErrorResponse                          `json:"error"`
+	Result    PurgeFilesByCache_TagsAndHostOrPrefixResult `json:"result"`
 }
 
 type PurgeFilesByCache_TagsAndHostOrPrefixResult struct {
-    Data starshield.Zone `json:"data"`
+	Data starshield.Zone `json:"data"`
 }

@@ -17,18 +17,17 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type CheckInstancesNameRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
-
-    /* 实例名称  */
-    InstanceName string `json:"instanceName"`
+	/* 实例名称  */
+	InstanceName string `json:"instanceName"`
 }
 
 /*
@@ -38,19 +37,19 @@ type CheckInstancesNameRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewCheckInstancesNameRequest(
-    regionId string,
-    instanceName string,
+	regionId string,
+	instanceName string,
 ) *CheckInstancesNameRequest {
 
 	return &CheckInstancesNameRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/instances:checkName",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
-        InstanceName: instanceName,
+		RegionId:     regionId,
+		InstanceName: instanceName,
 	}
 }
 
@@ -59,55 +58,55 @@ func NewCheckInstancesNameRequest(
  * param instanceName: 实例名称 (Required)
  */
 func NewCheckInstancesNameRequestWithAllParams(
-    regionId string,
-    instanceName string,
+	regionId string,
+	instanceName string,
 ) *CheckInstancesNameRequest {
 
-    return &CheckInstancesNameRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances:checkName",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        InstanceName: instanceName,
-    }
+	return &CheckInstancesNameRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances:checkName",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:     regionId,
+		InstanceName: instanceName,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewCheckInstancesNameRequestWithoutParam() *CheckInstancesNameRequest {
 
-    return &CheckInstancesNameRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances:checkName",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &CheckInstancesNameRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances:checkName",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *CheckInstancesNameRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param instanceName: 实例名称(Required) */
 func (r *CheckInstancesNameRequest) SetInstanceName(instanceName string) {
-    r.InstanceName = instanceName
+	r.InstanceName = instanceName
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r CheckInstancesNameRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type CheckInstancesNameResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result CheckInstancesNameResult `json:"result"`
+	RequestID string                   `json:"requestId"`
+	Error     core.ErrorResponse       `json:"error"`
+	Result    CheckInstancesNameResult `json:"result"`
 }
 
 type CheckInstancesNameResult struct {

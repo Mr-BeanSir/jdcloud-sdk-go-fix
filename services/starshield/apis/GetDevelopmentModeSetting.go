@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetDevelopmentModeSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetDevelopmentModeSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetDevelopmentModeSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetDevelopmentModeSettingRequest {
 
 	return &GetDevelopmentModeSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$development_mode",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetDevelopmentModeSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetDevelopmentModeSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetDevelopmentModeSettingRequest {
 
-    return &GetDevelopmentModeSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$development_mode",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetDevelopmentModeSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$development_mode",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetDevelopmentModeSettingRequestWithoutParam() *GetDevelopmentModeSettingRequest {
 
-    return &GetDevelopmentModeSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$development_mode",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetDevelopmentModeSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$development_mode",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetDevelopmentModeSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetDevelopmentModeSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetDevelopmentModeSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetDevelopmentModeSettingResult `json:"result"`
+	RequestID string                          `json:"requestId"`
+	Error     core.ErrorResponse              `json:"error"`
+	Result    GetDevelopmentModeSettingResult `json:"result"`
 }
 
 type GetDevelopmentModeSettingResult struct {
-    Data starshield.DevelopmentMode `json:"data"`
+	Data starshield.DevelopmentMode `json:"data"`
 }

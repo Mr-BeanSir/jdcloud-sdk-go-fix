@@ -17,34 +17,33 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListFirewallPackagesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/* Name of the firewall package (Optional) */
+	Name *string `json:"name"`
 
-    /* Name of the firewall package (Optional) */
-    Name *string `json:"name"`
+	/* Page number of paginated results (Optional) */
+	Page *int `json:"page"`
 
-    /* Page number of paginated results (Optional) */
-    Page *int `json:"page"`
+	/* 每页的包数 (Optional) */
+	Per_page *int `json:"per_page"`
 
-    /* 每页的包数 (Optional) */
-    Per_page *int `json:"per_page"`
+	/* 按字段对包排序 (Optional) */
+	Order *string `json:"order"`
 
-    /* 按字段对包排序 (Optional) */
-    Order *string `json:"order"`
+	/* asc - 升序；desc - 降序 (Optional) */
+	Direction *string `json:"direction"`
 
-    /* asc - 升序；desc - 降序 (Optional) */
-    Direction *string `json:"direction"`
-
-    /* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
-    Match *string `json:"match"`
+	/* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
+	Match *string `json:"match"`
 }
 
 /*
@@ -53,17 +52,17 @@ type ListFirewallPackagesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListFirewallPackagesRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListFirewallPackagesRequest {
 
 	return &ListFirewallPackagesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -77,92 +76,92 @@ func NewListFirewallPackagesRequest(
  * param match: 是否匹配所有搜索要求或至少一个（任何） (Optional)
  */
 func NewListFirewallPackagesRequestWithAllParams(
-    zone_identifier string,
-    name *string,
-    page *int,
-    per_page *int,
-    order *string,
-    direction *string,
-    match *string,
+	zone_identifier string,
+	name *string,
+	page *int,
+	per_page *int,
+	order *string,
+	direction *string,
+	match *string,
 ) *ListFirewallPackagesRequest {
 
-    return &ListFirewallPackagesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Name: name,
-        Page: page,
-        Per_page: per_page,
-        Order: order,
-        Direction: direction,
-        Match: match,
-    }
+	return &ListFirewallPackagesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Name:            name,
+		Page:            page,
+		Per_page:        per_page,
+		Order:           order,
+		Direction:       direction,
+		Match:           match,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListFirewallPackagesRequestWithoutParam() *ListFirewallPackagesRequest {
 
-    return &ListFirewallPackagesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListFirewallPackagesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ListFirewallPackagesRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param name: Name of the firewall package(Optional) */
 func (r *ListFirewallPackagesRequest) SetName(name string) {
-    r.Name = &name
+	r.Name = &name
 }
 
 /* param page: Page number of paginated results(Optional) */
 func (r *ListFirewallPackagesRequest) SetPage(page int) {
-    r.Page = &page
+	r.Page = &page
 }
 
 /* param per_page: 每页的包数(Optional) */
 func (r *ListFirewallPackagesRequest) SetPer_page(per_page int) {
-    r.Per_page = &per_page
+	r.Per_page = &per_page
 }
 
 /* param order: 按字段对包排序(Optional) */
 func (r *ListFirewallPackagesRequest) SetOrder(order string) {
-    r.Order = &order
+	r.Order = &order
 }
 
 /* param direction: asc - 升序；desc - 降序(Optional) */
 func (r *ListFirewallPackagesRequest) SetDirection(direction string) {
-    r.Direction = &direction
+	r.Direction = &direction
 }
 
 /* param match: 是否匹配所有搜索要求或至少一个（任何）(Optional) */
 func (r *ListFirewallPackagesRequest) SetMatch(match string) {
-    r.Match = &match
+	r.Match = &match
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListFirewallPackagesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListFirewallPackagesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListFirewallPackagesResult `json:"result"`
+	RequestID string                     `json:"requestId"`
+	Error     core.ErrorResponse         `json:"error"`
+	Result    ListFirewallPackagesResult `json:"result"`
 }
 
 type ListFirewallPackagesResult struct {
-    DataList []starshield.WAFRulePackage `json:"dataList"`
+	DataList []starshield.WAFRulePackage `json:"dataList"`
 }

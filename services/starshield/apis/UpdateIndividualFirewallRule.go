@@ -17,43 +17,42 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type UpdateIndividualFirewallRuleRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Id string `json:"id"`
 
-    /*   */
-    Id string `json:"id"`
+	/* 应用于匹配请求的行动。注意，行动 "log "只适用于企业客户。 (Optional) */
+	Action *string `json:"action"`
 
-    /* 应用于匹配请求的行动。注意，行动 "log "只适用于企业客户。 (Optional) */
-    Action *string `json:"action"`
+	/*  (Optional) */
+	Filter *starshield.Filter `json:"filter"`
 
-    /*  (Optional) */
-    Filter *starshield.Filter `json:"filter"`
+	/*  (Optional) */
+	Products []string `json:"products"`
 
-    /*  (Optional) */
-    Products []string `json:"products"`
+	/* 规则的优先级，允许控制处理顺序。一个较小的数字表示高优先级。如果不提供，任何有优先权的规则将在没有优先权的规则之前排序。 (Optional) */
+	Priority *int `json:"priority"`
 
-    /* 规则的优先级，允许控制处理顺序。一个较小的数字表示高优先级。如果不提供，任何有优先权的规则将在没有优先权的规则之前排序。 (Optional) */
-    Priority *int `json:"priority"`
+	/* 此防火墙规则当前是否已暂停。 (Optional) */
+	Paused *bool `json:"paused"`
 
-    /* 此防火墙规则当前是否已暂停。 (Optional) */
-    Paused *bool `json:"paused"`
+	/* 短引用标记，用于快速选择相关规则。 (Optional) */
+	Ref *string `json:"ref"`
 
-    /* 短引用标记，用于快速选择相关规则。 (Optional) */
-    Ref *string `json:"ref"`
+	/*  (Optional) */
+	Action_parameters *starshield.Action_parameters `json:"action_parameters"`
 
-    /*  (Optional) */
-    Action_parameters *starshield.Action_parameters `json:"action_parameters"`
-
-    /* 对规则的描述，以帮助识别它。 (Optional) */
-    Description *string `json:"description"`
+	/* 对规则的描述，以帮助识别它。 (Optional) */
+	Description *string `json:"description"`
 }
 
 /*
@@ -63,19 +62,19 @@ type UpdateIndividualFirewallRuleRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewUpdateIndividualFirewallRuleRequest(
-    zone_identifier string,
-    id string,
+	zone_identifier string,
+	id string,
 ) *UpdateIndividualFirewallRuleRequest {
 
 	return &UpdateIndividualFirewallRuleRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
 			Method:  "PUT",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Id: id,
+		Zone_identifier: zone_identifier,
+		Id:              id,
 	}
 }
 
@@ -92,113 +91,113 @@ func NewUpdateIndividualFirewallRuleRequest(
  * param description: 对规则的描述，以帮助识别它。 (Optional)
  */
 func NewUpdateIndividualFirewallRuleRequestWithAllParams(
-    zone_identifier string,
-    id string,
-    action *string,
-    filter *starshield.Filter,
-    products []string,
-    priority *int,
-    paused *bool,
-    ref *string,
-    action_parameters *starshield.Action_parameters,
-    description *string,
+	zone_identifier string,
+	id string,
+	action *string,
+	filter *starshield.Filter,
+	products []string,
+	priority *int,
+	paused *bool,
+	ref *string,
+	action_parameters *starshield.Action_parameters,
+	description *string,
 ) *UpdateIndividualFirewallRuleRequest {
 
-    return &UpdateIndividualFirewallRuleRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Id: id,
-        Action: action,
-        Filter: filter,
-        Products: products,
-        Priority: priority,
-        Paused: paused,
-        Ref: ref,
-        Action_parameters: action_parameters,
-        Description: description,
-    }
+	return &UpdateIndividualFirewallRuleRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier:   zone_identifier,
+		Id:                id,
+		Action:            action,
+		Filter:            filter,
+		Products:          products,
+		Priority:          priority,
+		Paused:            paused,
+		Ref:               ref,
+		Action_parameters: action_parameters,
+		Description:       description,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewUpdateIndividualFirewallRuleRequestWithoutParam() *UpdateIndividualFirewallRuleRequest {
 
-    return &UpdateIndividualFirewallRuleRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &UpdateIndividualFirewallRuleRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$rules/{id}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *UpdateIndividualFirewallRuleRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param id: (Required) */
 func (r *UpdateIndividualFirewallRuleRequest) SetId(id string) {
-    r.Id = id
+	r.Id = id
 }
 
 /* param action: 应用于匹配请求的行动。注意，行动 "log "只适用于企业客户。(Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetAction(action string) {
-    r.Action = &action
+	r.Action = &action
 }
 
 /* param filter: (Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetFilter(filter *starshield.Filter) {
-    r.Filter = filter
+	r.Filter = filter
 }
 
 /* param products: (Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetProducts(products []string) {
-    r.Products = products
+	r.Products = products
 }
 
 /* param priority: 规则的优先级，允许控制处理顺序。一个较小的数字表示高优先级。如果不提供，任何有优先权的规则将在没有优先权的规则之前排序。(Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetPriority(priority int) {
-    r.Priority = &priority
+	r.Priority = &priority
 }
 
 /* param paused: 此防火墙规则当前是否已暂停。(Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetPaused(paused bool) {
-    r.Paused = &paused
+	r.Paused = &paused
 }
 
 /* param ref: 短引用标记，用于快速选择相关规则。(Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetRef(ref string) {
-    r.Ref = &ref
+	r.Ref = &ref
 }
 
 /* param action_parameters: (Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetAction_parameters(action_parameters *starshield.Action_parameters) {
-    r.Action_parameters = action_parameters
+	r.Action_parameters = action_parameters
 }
 
 /* param description: 对规则的描述，以帮助识别它。(Optional) */
 func (r *UpdateIndividualFirewallRuleRequest) SetDescription(description string) {
-    r.Description = &description
+	r.Description = &description
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r UpdateIndividualFirewallRuleRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type UpdateIndividualFirewallRuleResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result UpdateIndividualFirewallRuleResult `json:"result"`
+	RequestID string                             `json:"requestId"`
+	Error     core.ErrorResponse                 `json:"error"`
+	Result    UpdateIndividualFirewallRuleResult `json:"result"`
 }
 
 type UpdateIndividualFirewallRuleResult struct {
-    Data starshield.FirewallRule `json:"data"`
+	Data starshield.FirewallRule `json:"data"`
 }

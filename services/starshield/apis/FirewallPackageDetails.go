@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type FirewallPackageDetailsRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*   */
-    Identifier string `json:"identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 }
 
 /*
@@ -39,19 +38,19 @@ type FirewallPackageDetailsRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewFirewallPackageDetailsRequest(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *FirewallPackageDetailsRequest {
 
 	return &FirewallPackageDetailsRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{identifier}",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
 	}
 }
 
@@ -60,57 +59,57 @@ func NewFirewallPackageDetailsRequest(
  * param identifier:  (Required)
  */
 func NewFirewallPackageDetailsRequestWithAllParams(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *FirewallPackageDetailsRequest {
 
-    return &FirewallPackageDetailsRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{identifier}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
-    }
+	return &FirewallPackageDetailsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{identifier}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewFirewallPackageDetailsRequestWithoutParam() *FirewallPackageDetailsRequest {
 
-    return &FirewallPackageDetailsRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{identifier}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &FirewallPackageDetailsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{identifier}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *FirewallPackageDetailsRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param identifier: (Required) */
 func (r *FirewallPackageDetailsRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r FirewallPackageDetailsRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type FirewallPackageDetailsResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result FirewallPackageDetailsResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    FirewallPackageDetailsResult `json:"result"`
 }
 
 type FirewallPackageDetailsResult struct {
-    Data starshield.WAFRulePackage `json:"data"`
+	Data starshield.WAFRulePackage `json:"data"`
 }

@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetServerSideExcludeSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetServerSideExcludeSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetServerSideExcludeSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetServerSideExcludeSettingRequest {
 
 	return &GetServerSideExcludeSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$server_side_exclude",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetServerSideExcludeSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetServerSideExcludeSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetServerSideExcludeSettingRequest {
 
-    return &GetServerSideExcludeSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$server_side_exclude",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetServerSideExcludeSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$server_side_exclude",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetServerSideExcludeSettingRequestWithoutParam() *GetServerSideExcludeSettingRequest {
 
-    return &GetServerSideExcludeSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$server_side_exclude",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetServerSideExcludeSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$server_side_exclude",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetServerSideExcludeSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetServerSideExcludeSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetServerSideExcludeSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetServerSideExcludeSettingResult `json:"result"`
+	RequestID string                            `json:"requestId"`
+	Error     core.ErrorResponse                `json:"error"`
+	Result    GetServerSideExcludeSettingResult `json:"result"`
 }
 
 type GetServerSideExcludeSettingResult struct {
-    Data starshield.ServerSideExclude `json:"data"`
+	Data starshield.ServerSideExclude `json:"data"`
 }

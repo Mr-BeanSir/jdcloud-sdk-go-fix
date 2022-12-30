@@ -17,25 +17,24 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type DescribeInstancesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
+	/* 页容量，默认10, 范围（1-100） (Optional) */
+	PageSize *int `json:"pageSize"`
 
-    /* 页容量，默认10, 范围（1-100） (Optional) */
-    PageSize *int `json:"pageSize"`
+	/* 页序号，默认1，不能小于1 (Optional) */
+	PageNumber *int `json:"pageNumber"`
 
-    /* 页序号，默认1，不能小于1 (Optional) */
-    PageNumber *int `json:"pageNumber"`
-
-    /* 实例名称 (Optional) */
-    InstanceName *string `json:"instanceName"`
+	/* 实例名称 (Optional) */
+	InstanceName *string `json:"instanceName"`
 }
 
 /*
@@ -44,17 +43,17 @@ type DescribeInstancesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDescribeInstancesRequest(
-    regionId string,
+	regionId string,
 ) *DescribeInstancesRequest {
 
 	return &DescribeInstancesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/instances",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
+		RegionId: regionId,
 	}
 }
 
@@ -65,74 +64,74 @@ func NewDescribeInstancesRequest(
  * param instanceName: 实例名称 (Optional)
  */
 func NewDescribeInstancesRequestWithAllParams(
-    regionId string,
-    pageSize *int,
-    pageNumber *int,
-    instanceName *string,
+	regionId string,
+	pageSize *int,
+	pageNumber *int,
+	instanceName *string,
 ) *DescribeInstancesRequest {
 
-    return &DescribeInstancesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        PageSize: pageSize,
-        PageNumber: pageNumber,
-        InstanceName: instanceName,
-    }
+	return &DescribeInstancesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:     regionId,
+		PageSize:     pageSize,
+		PageNumber:   pageNumber,
+		InstanceName: instanceName,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDescribeInstancesRequestWithoutParam() *DescribeInstancesRequest {
 
-    return &DescribeInstancesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DescribeInstancesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *DescribeInstancesRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param pageSize: 页容量，默认10, 范围（1-100）(Optional) */
 func (r *DescribeInstancesRequest) SetPageSize(pageSize int) {
-    r.PageSize = &pageSize
+	r.PageSize = &pageSize
 }
 
 /* param pageNumber: 页序号，默认1，不能小于1(Optional) */
 func (r *DescribeInstancesRequest) SetPageNumber(pageNumber int) {
-    r.PageNumber = &pageNumber
+	r.PageNumber = &pageNumber
 }
 
 /* param instanceName: 实例名称(Optional) */
 func (r *DescribeInstancesRequest) SetInstanceName(instanceName string) {
-    r.InstanceName = &instanceName
+	r.InstanceName = &instanceName
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DescribeInstancesRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type DescribeInstancesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DescribeInstancesResult `json:"result"`
+	RequestID string                  `json:"requestId"`
+	Error     core.ErrorResponse      `json:"error"`
+	Result    DescribeInstancesResult `json:"result"`
 }
 
 type DescribeInstancesResult struct {
-    DataList []starshield.DescribeInstancesRes `json:"dataList"`
-    CurrentCount int `json:"currentCount"`
-    TotalCount int `json:"totalCount"`
-    TotalPage int `json:"totalPage"`
+	DataList     []starshield.DescribeInstancesRes `json:"dataList"`
+	CurrentCount int                               `json:"currentCount"`
+	TotalCount   int                               `json:"totalCount"`
+	TotalPage    int                               `json:"totalPage"`
 }

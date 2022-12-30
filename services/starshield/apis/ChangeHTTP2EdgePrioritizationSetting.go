@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeHTTP2EdgePrioritizationSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的有效值 (Optional) */
-    Value *string `json:"value"`
+	/* 该设置的有效值 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeHTTP2EdgePrioritizationSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeHTTP2EdgePrioritizationSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeHTTP2EdgePrioritizationSettingRequest {
 
 	return &ChangeHTTP2EdgePrioritizationSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$h2_prioritization",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeHTTP2EdgePrioritizationSettingRequest(
  * param value: 该设置的有效值 (Optional)
  */
 func NewChangeHTTP2EdgePrioritizationSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeHTTP2EdgePrioritizationSettingRequest {
 
-    return &ChangeHTTP2EdgePrioritizationSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$h2_prioritization",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeHTTP2EdgePrioritizationSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$h2_prioritization",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeHTTP2EdgePrioritizationSettingRequestWithoutParam() *ChangeHTTP2EdgePrioritizationSettingRequest {
 
-    return &ChangeHTTP2EdgePrioritizationSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$h2_prioritization",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeHTTP2EdgePrioritizationSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$h2_prioritization",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeHTTP2EdgePrioritizationSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的有效值(Optional) */
 func (r *ChangeHTTP2EdgePrioritizationSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeHTTP2EdgePrioritizationSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeHTTP2EdgePrioritizationSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeHTTP2EdgePrioritizationSettingResult `json:"result"`
+	RequestID string                                     `json:"requestId"`
+	Error     core.ErrorResponse                         `json:"error"`
+	Result    ChangeHTTP2EdgePrioritizationSettingResult `json:"result"`
 }
 
 type ChangeHTTP2EdgePrioritizationSettingResult struct {
-    Data starshield.HTTP2EdgePrioritization `json:"data"`
+	Data starshield.HTTP2EdgePrioritization `json:"data"`
 }

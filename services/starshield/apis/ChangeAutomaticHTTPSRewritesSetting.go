@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangeAutomaticHTTPSRewritesSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* on - 开启；off - 关闭 (Optional) */
-    Value *string `json:"value"`
+	/* on - 开启；off - 关闭 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangeAutomaticHTTPSRewritesSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangeAutomaticHTTPSRewritesSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangeAutomaticHTTPSRewritesSettingRequest {
 
 	return &ChangeAutomaticHTTPSRewritesSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangeAutomaticHTTPSRewritesSettingRequest(
  * param value: on - 开启；off - 关闭 (Optional)
  */
 func NewChangeAutomaticHTTPSRewritesSettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangeAutomaticHTTPSRewritesSettingRequest {
 
-    return &ChangeAutomaticHTTPSRewritesSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangeAutomaticHTTPSRewritesSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangeAutomaticHTTPSRewritesSettingRequestWithoutParam() *ChangeAutomaticHTTPSRewritesSettingRequest {
 
-    return &ChangeAutomaticHTTPSRewritesSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangeAutomaticHTTPSRewritesSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangeAutomaticHTTPSRewritesSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: on - 开启；off - 关闭(Optional) */
 func (r *ChangeAutomaticHTTPSRewritesSettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangeAutomaticHTTPSRewritesSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangeAutomaticHTTPSRewritesSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangeAutomaticHTTPSRewritesSettingResult `json:"result"`
+	RequestID string                                    `json:"requestId"`
+	Error     core.ErrorResponse                        `json:"error"`
+	Result    ChangeAutomaticHTTPSRewritesSettingResult `json:"result"`
 }
 
 type ChangeAutomaticHTTPSRewritesSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

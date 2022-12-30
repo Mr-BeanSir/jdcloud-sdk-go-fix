@@ -17,22 +17,21 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type RuleGroupDetailsRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Package_identifier string `json:"package_identifier"`
 
-    /*   */
-    Package_identifier string `json:"package_identifier"`
-
-    /*   */
-    Identifier string `json:"identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 }
 
 /*
@@ -43,21 +42,21 @@ type RuleGroupDetailsRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewRuleGroupDetailsRequest(
-    zone_identifier string,
-    package_identifier string,
-    identifier string,
+	zone_identifier string,
+	package_identifier string,
+	identifier string,
 ) *RuleGroupDetailsRequest {
 
 	return &RuleGroupDetailsRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Package_identifier: package_identifier,
-        Identifier: identifier,
+		Zone_identifier:    zone_identifier,
+		Package_identifier: package_identifier,
+		Identifier:         identifier,
 	}
 }
 
@@ -67,64 +66,64 @@ func NewRuleGroupDetailsRequest(
  * param identifier:  (Required)
  */
 func NewRuleGroupDetailsRequestWithAllParams(
-    zone_identifier string,
-    package_identifier string,
-    identifier string,
+	zone_identifier string,
+	package_identifier string,
+	identifier string,
 ) *RuleGroupDetailsRequest {
 
-    return &RuleGroupDetailsRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Package_identifier: package_identifier,
-        Identifier: identifier,
-    }
+	return &RuleGroupDetailsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier:    zone_identifier,
+		Package_identifier: package_identifier,
+		Identifier:         identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewRuleGroupDetailsRequestWithoutParam() *RuleGroupDetailsRequest {
 
-    return &RuleGroupDetailsRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &RuleGroupDetailsRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/firewall$$waf$$packages/{package_identifier}/groups/{identifier}",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *RuleGroupDetailsRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param package_identifier: (Required) */
 func (r *RuleGroupDetailsRequest) SetPackage_identifier(package_identifier string) {
-    r.Package_identifier = package_identifier
+	r.Package_identifier = package_identifier
 }
 
 /* param identifier: (Required) */
 func (r *RuleGroupDetailsRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r RuleGroupDetailsRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type RuleGroupDetailsResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result RuleGroupDetailsResult `json:"result"`
+	RequestID string                 `json:"requestId"`
+	Error     core.ErrorResponse     `json:"error"`
+	Result    RuleGroupDetailsResult `json:"result"`
 }
 
 type RuleGroupDetailsResult struct {
-    Data starshield.WAFRuleGroup `json:"data"`
+	Data starshield.WAFRuleGroup `json:"data"`
 }

@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetSecurityHeaderHSTSSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetSecurityHeaderHSTSSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetSecurityHeaderHSTSSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetSecurityHeaderHSTSSettingRequest {
 
 	return &GetSecurityHeaderHSTSSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$security_header",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetSecurityHeaderHSTSSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetSecurityHeaderHSTSSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetSecurityHeaderHSTSSettingRequest {
 
-    return &GetSecurityHeaderHSTSSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$security_header",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetSecurityHeaderHSTSSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$security_header",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetSecurityHeaderHSTSSettingRequestWithoutParam() *GetSecurityHeaderHSTSSettingRequest {
 
-    return &GetSecurityHeaderHSTSSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$security_header",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetSecurityHeaderHSTSSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$security_header",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetSecurityHeaderHSTSSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetSecurityHeaderHSTSSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetSecurityHeaderHSTSSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetSecurityHeaderHSTSSettingResult `json:"result"`
+	RequestID string                             `json:"requestId"`
+	Error     core.ErrorResponse                 `json:"error"`
+	Result    GetSecurityHeaderHSTSSettingResult `json:"result"`
 }
 
 type GetSecurityHeaderHSTSSettingResult struct {
-    Data starshield.SecurityHeader `json:"data"`
+	Data starshield.SecurityHeader `json:"data"`
 }

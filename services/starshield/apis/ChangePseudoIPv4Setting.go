@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ChangePseudoIPv4SettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 该设置的有效值 (Optional) */
-    Value *string `json:"value"`
+	/* 该设置的有效值 (Optional) */
+	Value *string `json:"value"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ChangePseudoIPv4SettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewChangePseudoIPv4SettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ChangePseudoIPv4SettingRequest {
 
 	return &ChangePseudoIPv4SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
 			Method:  "PATCH",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewChangePseudoIPv4SettingRequest(
  * param value: 该设置的有效值 (Optional)
  */
 func NewChangePseudoIPv4SettingRequestWithAllParams(
-    zone_identifier string,
-    value *string,
+	zone_identifier string,
+	value *string,
 ) *ChangePseudoIPv4SettingRequest {
 
-    return &ChangePseudoIPv4SettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Value: value,
-    }
+	return &ChangePseudoIPv4SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Value:           value,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewChangePseudoIPv4SettingRequestWithoutParam() *ChangePseudoIPv4SettingRequest {
 
-    return &ChangePseudoIPv4SettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
-            Method:  "PATCH",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ChangePseudoIPv4SettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$pseudo_ipv4",
+			Method:  "PATCH",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ChangePseudoIPv4SettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param value: 该设置的有效值(Optional) */
 func (r *ChangePseudoIPv4SettingRequest) SetValue(value string) {
-    r.Value = &value
+	r.Value = &value
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ChangePseudoIPv4SettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ChangePseudoIPv4SettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ChangePseudoIPv4SettingResult `json:"result"`
+	RequestID string                        `json:"requestId"`
+	Error     core.ErrorResponse            `json:"error"`
+	Result    ChangePseudoIPv4SettingResult `json:"result"`
 }
 
 type ChangePseudoIPv4SettingResult struct {
-    Data starshield.PseudoIPv4Value `json:"data"`
+	Data starshield.PseudoIPv4Value `json:"data"`
 }

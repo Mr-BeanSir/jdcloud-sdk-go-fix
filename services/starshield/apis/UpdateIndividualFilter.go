@@ -17,31 +17,30 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type UpdateIndividualFilterRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Id string `json:"id"`
 
-    /*   */
-    Id string `json:"id"`
+	/* 要使用的筛选器表达式 (Optional) */
+	Expression *string `json:"expression"`
 
-    /* 要使用的筛选器表达式 (Optional) */
-    Expression *string `json:"expression"`
+	/* 此筛选器当前是否已暂停 (Optional) */
+	Paused *bool `json:"paused"`
 
-    /* 此筛选器当前是否已暂停 (Optional) */
-    Paused *bool `json:"paused"`
+	/* 可用于描述过滤器用途的注释 (Optional) */
+	Description *string `json:"description"`
 
-    /* 可用于描述过滤器用途的注释 (Optional) */
-    Description *string `json:"description"`
-
-    /* 短引用标记，用于快速选择相关规则。 (Optional) */
-    Ref *string `json:"ref"`
+	/* 短引用标记，用于快速选择相关规则。 (Optional) */
+	Ref *string `json:"ref"`
 }
 
 /*
@@ -51,19 +50,19 @@ type UpdateIndividualFilterRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewUpdateIndividualFilterRequest(
-    zone_identifier string,
-    id string,
+	zone_identifier string,
+	id string,
 ) *UpdateIndividualFilterRequest {
 
 	return &UpdateIndividualFilterRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/filters/{id}",
 			Method:  "PUT",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Id: id,
+		Zone_identifier: zone_identifier,
+		Id:              id,
 	}
 }
 
@@ -76,85 +75,85 @@ func NewUpdateIndividualFilterRequest(
  * param ref: 短引用标记，用于快速选择相关规则。 (Optional)
  */
 func NewUpdateIndividualFilterRequestWithAllParams(
-    zone_identifier string,
-    id string,
-    expression *string,
-    paused *bool,
-    description *string,
-    ref *string,
+	zone_identifier string,
+	id string,
+	expression *string,
+	paused *bool,
+	description *string,
+	ref *string,
 ) *UpdateIndividualFilterRequest {
 
-    return &UpdateIndividualFilterRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/filters/{id}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Id: id,
-        Expression: expression,
-        Paused: paused,
-        Description: description,
-        Ref: ref,
-    }
+	return &UpdateIndividualFilterRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/filters/{id}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Id:              id,
+		Expression:      expression,
+		Paused:          paused,
+		Description:     description,
+		Ref:             ref,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewUpdateIndividualFilterRequestWithoutParam() *UpdateIndividualFilterRequest {
 
-    return &UpdateIndividualFilterRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/filters/{id}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &UpdateIndividualFilterRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/filters/{id}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *UpdateIndividualFilterRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param id: (Required) */
 func (r *UpdateIndividualFilterRequest) SetId(id string) {
-    r.Id = id
+	r.Id = id
 }
 
 /* param expression: 要使用的筛选器表达式(Optional) */
 func (r *UpdateIndividualFilterRequest) SetExpression(expression string) {
-    r.Expression = &expression
+	r.Expression = &expression
 }
 
 /* param paused: 此筛选器当前是否已暂停(Optional) */
 func (r *UpdateIndividualFilterRequest) SetPaused(paused bool) {
-    r.Paused = &paused
+	r.Paused = &paused
 }
 
 /* param description: 可用于描述过滤器用途的注释(Optional) */
 func (r *UpdateIndividualFilterRequest) SetDescription(description string) {
-    r.Description = &description
+	r.Description = &description
 }
 
 /* param ref: 短引用标记，用于快速选择相关规则。(Optional) */
 func (r *UpdateIndividualFilterRequest) SetRef(ref string) {
-    r.Ref = &ref
+	r.Ref = &ref
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r UpdateIndividualFilterRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type UpdateIndividualFilterResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result UpdateIndividualFilterResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    UpdateIndividualFilterResult `json:"result"`
 }
 
 type UpdateIndividualFilterResult struct {
-    Data starshield.Filter `json:"data"`
+	Data starshield.Filter `json:"data"`
 }

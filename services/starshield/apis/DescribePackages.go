@@ -17,22 +17,21 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type DescribePackagesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
+	/* 页容量，默认10, 范围（1-100） (Optional) */
+	PageSize *int `json:"pageSize"`
 
-    /* 页容量，默认10, 范围（1-100） (Optional) */
-    PageSize *int `json:"pageSize"`
-
-    /* 页序号，默认1，不能小于1 (Optional) */
-    PageNumber *int `json:"pageNumber"`
+	/* 页序号，默认1，不能小于1 (Optional) */
+	PageNumber *int `json:"pageNumber"`
 }
 
 /*
@@ -41,17 +40,17 @@ type DescribePackagesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDescribePackagesRequest(
-    regionId string,
+	regionId string,
 ) *DescribePackagesRequest {
 
 	return &DescribePackagesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/packages",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
+		RegionId: regionId,
 	}
 }
 
@@ -61,67 +60,67 @@ func NewDescribePackagesRequest(
  * param pageNumber: 页序号，默认1，不能小于1 (Optional)
  */
 func NewDescribePackagesRequestWithAllParams(
-    regionId string,
-    pageSize *int,
-    pageNumber *int,
+	regionId string,
+	pageSize *int,
+	pageNumber *int,
 ) *DescribePackagesRequest {
 
-    return &DescribePackagesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/packages",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        PageSize: pageSize,
-        PageNumber: pageNumber,
-    }
+	return &DescribePackagesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/packages",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:   regionId,
+		PageSize:   pageSize,
+		PageNumber: pageNumber,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDescribePackagesRequestWithoutParam() *DescribePackagesRequest {
 
-    return &DescribePackagesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/packages",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DescribePackagesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/packages",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *DescribePackagesRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param pageSize: 页容量，默认10, 范围（1-100）(Optional) */
 func (r *DescribePackagesRequest) SetPageSize(pageSize int) {
-    r.PageSize = &pageSize
+	r.PageSize = &pageSize
 }
 
 /* param pageNumber: 页序号，默认1，不能小于1(Optional) */
 func (r *DescribePackagesRequest) SetPageNumber(pageNumber int) {
-    r.PageNumber = &pageNumber
+	r.PageNumber = &pageNumber
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DescribePackagesRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type DescribePackagesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DescribePackagesResult `json:"result"`
+	RequestID string                 `json:"requestId"`
+	Error     core.ErrorResponse     `json:"error"`
+	Result    DescribePackagesResult `json:"result"`
 }
 
 type DescribePackagesResult struct {
-    DataList []starshield.DescribePackRes `json:"dataList"`
-    CurrentCount int `json:"currentCount"`
-    TotalCount int `json:"totalCount"`
-    TotalPage int `json:"totalPage"`
+	DataList     []starshield.DescribePackRes `json:"dataList"`
+	CurrentCount int                          `json:"currentCount"`
+	TotalCount   int                          `json:"totalCount"`
+	TotalPage    int                          `json:"totalPage"`
 }

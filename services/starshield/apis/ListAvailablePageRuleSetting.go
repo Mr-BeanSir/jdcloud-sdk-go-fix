@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListAvailablePageRuleSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type ListAvailablePageRuleSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListAvailablePageRuleSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListAvailablePageRuleSettingRequest {
 
 	return &ListAvailablePageRuleSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/pagerules$$settings",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewListAvailablePageRuleSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewListAvailablePageRuleSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListAvailablePageRuleSettingRequest {
 
-    return &ListAvailablePageRuleSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/pagerules$$settings",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &ListAvailablePageRuleSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/pagerules$$settings",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListAvailablePageRuleSettingRequestWithoutParam() *ListAvailablePageRuleSettingRequest {
 
-    return &ListAvailablePageRuleSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/pagerules$$settings",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListAvailablePageRuleSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/pagerules$$settings",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ListAvailablePageRuleSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListAvailablePageRuleSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListAvailablePageRuleSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListAvailablePageRuleSettingResult `json:"result"`
+	RequestID string                             `json:"requestId"`
+	Error     core.ErrorResponse                 `json:"error"`
+	Result    ListAvailablePageRuleSettingResult `json:"result"`
 }
 
 type ListAvailablePageRuleSettingResult struct {
-    DataList []starshield.AvailablePageRule `json:"dataList"`
+	DataList []starshield.AvailablePageRule `json:"dataList"`
 }

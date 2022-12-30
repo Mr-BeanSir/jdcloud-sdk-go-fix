@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListCertificatePacksRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /* 包括所有状态的证书包，而不仅仅是激活状态的证书包。 (Optional) */
-    Status *string `json:"status"`
+	/* 包括所有状态的证书包，而不仅仅是激活状态的证书包。 (Optional) */
+	Status *string `json:"status"`
 }
 
 /*
@@ -38,17 +37,17 @@ type ListCertificatePacksRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListCertificatePacksRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListCertificatePacksRequest {
 
 	return &ListCertificatePacksRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/ssl$$certificate_packs",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewListCertificatePacksRequest(
  * param status: 包括所有状态的证书包，而不仅仅是激活状态的证书包。 (Optional)
  */
 func NewListCertificatePacksRequestWithAllParams(
-    zone_identifier string,
-    status *string,
+	zone_identifier string,
+	status *string,
 ) *ListCertificatePacksRequest {
 
-    return &ListCertificatePacksRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/ssl$$certificate_packs",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Status: status,
-    }
+	return &ListCertificatePacksRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/ssl$$certificate_packs",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Status:          status,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListCertificatePacksRequestWithoutParam() *ListCertificatePacksRequest {
 
-    return &ListCertificatePacksRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/ssl$$certificate_packs",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListCertificatePacksRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/ssl$$certificate_packs",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ListCertificatePacksRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param status: 包括所有状态的证书包，而不仅仅是激活状态的证书包。(Optional) */
 func (r *ListCertificatePacksRequest) SetStatus(status string) {
-    r.Status = &status
+	r.Status = &status
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListCertificatePacksRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListCertificatePacksResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListCertificatePacksResult `json:"result"`
+	RequestID string                     `json:"requestId"`
+	Error     core.ErrorResponse         `json:"error"`
+	Result    ListCertificatePacksResult `json:"result"`
 }
 
 type ListCertificatePacksResult struct {
-    DataList []starshield.CertificatePack `json:"dataList"`
+	DataList []starshield.CertificatePack `json:"dataList"`
 }

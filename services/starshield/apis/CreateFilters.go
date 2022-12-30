@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type CreateFiltersRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*  (Optional) */
-    Filters []starshield.Filter `json:"filters"`
+	/*  (Optional) */
+	Filters []starshield.Filter `json:"filters"`
 }
 
 /*
@@ -38,17 +37,17 @@ type CreateFiltersRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewCreateFiltersRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *CreateFiltersRequest {
 
 	return &CreateFiltersRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/filters",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewCreateFiltersRequest(
  * param filters:  (Optional)
  */
 func NewCreateFiltersRequestWithAllParams(
-    zone_identifier string,
-    filters []starshield.Filter,
+	zone_identifier string,
+	filters []starshield.Filter,
 ) *CreateFiltersRequest {
 
-    return &CreateFiltersRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/filters",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Filters: filters,
-    }
+	return &CreateFiltersRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/filters",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Filters:         filters,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewCreateFiltersRequestWithoutParam() *CreateFiltersRequest {
 
-    return &CreateFiltersRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/filters",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &CreateFiltersRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/filters",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *CreateFiltersRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param filters: (Optional) */
 func (r *CreateFiltersRequest) SetFilters(filters []starshield.Filter) {
-    r.Filters = filters
+	r.Filters = filters
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r CreateFiltersRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type CreateFiltersResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result CreateFiltersResult `json:"result"`
+	RequestID string              `json:"requestId"`
+	Error     core.ErrorResponse  `json:"error"`
+	Result    CreateFiltersResult `json:"result"`
 }
 
 type CreateFiltersResult struct {
-    DataList []starshield.Filter `json:"dataList"`
+	DataList []starshield.Filter `json:"dataList"`
 }

@@ -17,18 +17,17 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type SelectDetailListRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
-
-    /* 资源列表  */
-    ResourceList string `json:"resourceList"`
+	/* 资源列表  */
+	ResourceList string `json:"resourceList"`
 }
 
 /*
@@ -38,19 +37,19 @@ type SelectDetailListRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewSelectDetailListRequest(
-    regionId string,
-    resourceList string,
+	regionId string,
+	resourceList string,
 ) *SelectDetailListRequest {
 
 	return &SelectDetailListRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/instances:selectDetailList",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
-        ResourceList: resourceList,
+		RegionId:     regionId,
+		ResourceList: resourceList,
 	}
 }
 
@@ -59,57 +58,57 @@ func NewSelectDetailListRequest(
  * param resourceList: 资源列表 (Required)
  */
 func NewSelectDetailListRequestWithAllParams(
-    regionId string,
-    resourceList string,
+	regionId string,
+	resourceList string,
 ) *SelectDetailListRequest {
 
-    return &SelectDetailListRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances:selectDetailList",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        ResourceList: resourceList,
-    }
+	return &SelectDetailListRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances:selectDetailList",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:     regionId,
+		ResourceList: resourceList,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewSelectDetailListRequestWithoutParam() *SelectDetailListRequest {
 
-    return &SelectDetailListRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instances:selectDetailList",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &SelectDetailListRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instances:selectDetailList",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *SelectDetailListRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param resourceList: 资源列表(Required) */
 func (r *SelectDetailListRequest) SetResourceList(resourceList string) {
-    r.ResourceList = resourceList
+	r.ResourceList = resourceList
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r SelectDetailListRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type SelectDetailListResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result SelectDetailListResult `json:"result"`
+	RequestID string                 `json:"requestId"`
+	Error     core.ErrorResponse     `json:"error"`
+	Result    SelectDetailListResult `json:"result"`
 }
 
 type SelectDetailListResult struct {
-    Data []interface{} `json:"data"`
+	Data []interface{} `json:"data"`
 }

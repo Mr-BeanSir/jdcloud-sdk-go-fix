@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetTLSClientAuthSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetTLSClientAuthSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetTLSClientAuthSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetTLSClientAuthSettingRequest {
 
 	return &GetTLSClientAuthSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$tls_client_auth",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetTLSClientAuthSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetTLSClientAuthSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetTLSClientAuthSettingRequest {
 
-    return &GetTLSClientAuthSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$tls_client_auth",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetTLSClientAuthSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$tls_client_auth",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetTLSClientAuthSettingRequestWithoutParam() *GetTLSClientAuthSettingRequest {
 
-    return &GetTLSClientAuthSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$tls_client_auth",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetTLSClientAuthSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$tls_client_auth",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetTLSClientAuthSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetTLSClientAuthSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetTLSClientAuthSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetTLSClientAuthSettingResult `json:"result"`
+	RequestID string                        `json:"requestId"`
+	Error     core.ErrorResponse            `json:"error"`
+	Result    GetTLSClientAuthSettingResult `json:"result"`
 }
 
 type GetTLSClientAuthSettingResult struct {
-    Data starshield.TLSClientAuthentication `json:"data"`
+	Data starshield.TLSClientAuthentication `json:"data"`
 }

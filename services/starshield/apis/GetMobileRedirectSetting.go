@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetMobileRedirectSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetMobileRedirectSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetMobileRedirectSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetMobileRedirectSettingRequest {
 
 	return &GetMobileRedirectSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetMobileRedirectSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetMobileRedirectSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetMobileRedirectSettingRequest {
 
-    return &GetMobileRedirectSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetMobileRedirectSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetMobileRedirectSettingRequestWithoutParam() *GetMobileRedirectSettingRequest {
 
-    return &GetMobileRedirectSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetMobileRedirectSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$mobile_redirect",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetMobileRedirectSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetMobileRedirectSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetMobileRedirectSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetMobileRedirectSettingResult `json:"result"`
+	RequestID string                         `json:"requestId"`
+	Error     core.ErrorResponse             `json:"error"`
+	Result    GetMobileRedirectSettingResult `json:"result"`
 }
 
 type GetMobileRedirectSettingResult struct {
-    Data starshield.MobileRedirect `json:"data"`
+	Data starshield.MobileRedirect `json:"data"`
 }

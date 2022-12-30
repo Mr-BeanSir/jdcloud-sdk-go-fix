@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetHotlinkProtectionSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetHotlinkProtectionSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetHotlinkProtectionSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetHotlinkProtectionSettingRequest {
 
 	return &GetHotlinkProtectionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetHotlinkProtectionSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetHotlinkProtectionSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetHotlinkProtectionSettingRequest {
 
-    return &GetHotlinkProtectionSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetHotlinkProtectionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetHotlinkProtectionSettingRequestWithoutParam() *GetHotlinkProtectionSettingRequest {
 
-    return &GetHotlinkProtectionSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetHotlinkProtectionSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$hotlink_protection",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetHotlinkProtectionSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetHotlinkProtectionSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetHotlinkProtectionSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetHotlinkProtectionSettingResult `json:"result"`
+	RequestID string                            `json:"requestId"`
+	Error     core.ErrorResponse                `json:"error"`
+	Result    GetHotlinkProtectionSettingResult `json:"result"`
 }
 
 type GetHotlinkProtectionSettingResult struct {
-    Data starshield.HotlinkProtection `json:"data"`
+	Data starshield.HotlinkProtection `json:"data"`
 }

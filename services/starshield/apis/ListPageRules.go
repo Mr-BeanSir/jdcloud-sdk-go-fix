@@ -17,28 +17,27 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type ListPageRulesRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/* 页面规则的状态 (Optional) */
+	Status *string `json:"status"`
 
-    /* 页面规则的状态 (Optional) */
-    Status *string `json:"status"`
+	/* 用于按顺序排列页面规则的字段 (Optional) */
+	Order *string `json:"order"`
 
-    /* 用于按顺序排列页面规则的字段 (Optional) */
-    Order *string `json:"order"`
+	/* asc - 升序；desc - 降序 (Optional) */
+	Direction *string `json:"direction"`
 
-    /* asc - 升序；desc - 降序 (Optional) */
-    Direction *string `json:"direction"`
-
-    /* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
-    Match *string `json:"match"`
+	/* 是否匹配所有搜索要求或至少一个（任何） (Optional) */
+	Match *string `json:"match"`
 }
 
 /*
@@ -47,17 +46,17 @@ type ListPageRulesRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewListPageRulesRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *ListPageRulesRequest {
 
 	return &ListPageRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/pagerules",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -69,78 +68,78 @@ func NewListPageRulesRequest(
  * param match: 是否匹配所有搜索要求或至少一个（任何） (Optional)
  */
 func NewListPageRulesRequestWithAllParams(
-    zone_identifier string,
-    status *string,
-    order *string,
-    direction *string,
-    match *string,
+	zone_identifier string,
+	status *string,
+	order *string,
+	direction *string,
+	match *string,
 ) *ListPageRulesRequest {
 
-    return &ListPageRulesRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/pagerules",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Status: status,
-        Order: order,
-        Direction: direction,
-        Match: match,
-    }
+	return &ListPageRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/pagerules",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Status:          status,
+		Order:           order,
+		Direction:       direction,
+		Match:           match,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewListPageRulesRequestWithoutParam() *ListPageRulesRequest {
 
-    return &ListPageRulesRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/pagerules",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ListPageRulesRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/pagerules",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *ListPageRulesRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param status: 页面规则的状态(Optional) */
 func (r *ListPageRulesRequest) SetStatus(status string) {
-    r.Status = &status
+	r.Status = &status
 }
 
 /* param order: 用于按顺序排列页面规则的字段(Optional) */
 func (r *ListPageRulesRequest) SetOrder(order string) {
-    r.Order = &order
+	r.Order = &order
 }
 
 /* param direction: asc - 升序；desc - 降序(Optional) */
 func (r *ListPageRulesRequest) SetDirection(direction string) {
-    r.Direction = &direction
+	r.Direction = &direction
 }
 
 /* param match: 是否匹配所有搜索要求或至少一个（任何）(Optional) */
 func (r *ListPageRulesRequest) SetMatch(match string) {
-    r.Match = &match
+	r.Match = &match
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ListPageRulesRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type ListPageRulesResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ListPageRulesResult `json:"result"`
+	RequestID string              `json:"requestId"`
+	Error     core.ErrorResponse  `json:"error"`
+	Result    ListPageRulesResult `json:"result"`
 }
 
 type ListPageRulesResult struct {
-    DataList []starshield.PageRule `json:"dataList"`
+	DataList []starshield.PageRule `json:"dataList"`
 }

@@ -17,25 +17,24 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type CreateZoneRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 域名  */
+	Name string `json:"name"`
 
-    /* 域名  */
-    Name string `json:"name"`
+	/*   */
+	Account *starshield.Account `json:"account"`
 
-    /*   */
-    Account *starshield.Account `json:"account"`
+	/* 自动尝试获取现有DNS记录 (Optional) */
+	Jump_start *bool `json:"jump_start"`
 
-    /* 自动尝试获取现有DNS记录 (Optional) */
-    Jump_start *bool `json:"jump_start"`
-
-    /* 全接入域意味着DNS由星盾托管。半接入域通常是合作伙伴托管的域或CNAME设置。 (Optional) */
-    Ty_pe *string `json:"ty_pe"`
+	/* 全接入域意味着DNS由星盾托管。半接入域通常是合作伙伴托管的域或CNAME设置。 (Optional) */
+	Ty_pe *string `json:"ty_pe"`
 }
 
 /*
@@ -45,19 +44,19 @@ type CreateZoneRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewCreateZoneRequest(
-    name string,
-    account *starshield.Account,
+	name string,
+	account *starshield.Account,
 ) *CreateZoneRequest {
 
 	return &CreateZoneRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Name: name,
-        Account: account,
+		Name:    name,
+		Account: account,
 	}
 }
 
@@ -68,71 +67,71 @@ func NewCreateZoneRequest(
  * param ty_pe: 全接入域意味着DNS由星盾托管。半接入域通常是合作伙伴托管的域或CNAME设置。 (Optional)
  */
 func NewCreateZoneRequestWithAllParams(
-    name string,
-    account *starshield.Account,
-    jump_start *bool,
-    ty_pe *string,
+	name string,
+	account *starshield.Account,
+	jump_start *bool,
+	ty_pe *string,
 ) *CreateZoneRequest {
 
-    return &CreateZoneRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Name: name,
-        Account: account,
-        Jump_start: jump_start,
-        Ty_pe: ty_pe,
-    }
+	return &CreateZoneRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Name:       name,
+		Account:    account,
+		Jump_start: jump_start,
+		Ty_pe:      ty_pe,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewCreateZoneRequestWithoutParam() *CreateZoneRequest {
 
-    return &CreateZoneRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &CreateZoneRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param name: 域名(Required) */
 func (r *CreateZoneRequest) SetName(name string) {
-    r.Name = name
+	r.Name = name
 }
 
 /* param account: (Required) */
 func (r *CreateZoneRequest) SetAccount(account *starshield.Account) {
-    r.Account = account
+	r.Account = account
 }
 
 /* param jump_start: 自动尝试获取现有DNS记录(Optional) */
 func (r *CreateZoneRequest) SetJump_start(jump_start bool) {
-    r.Jump_start = &jump_start
+	r.Jump_start = &jump_start
 }
 
 /* param ty_pe: 全接入域意味着DNS由星盾托管。半接入域通常是合作伙伴托管的域或CNAME设置。(Optional) */
 func (r *CreateZoneRequest) SetTy_pe(ty_pe string) {
-    r.Ty_pe = &ty_pe
+	r.Ty_pe = &ty_pe
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r CreateZoneRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type CreateZoneResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result CreateZoneResult `json:"result"`
+	RequestID string             `json:"requestId"`
+	Error     core.ErrorResponse `json:"error"`
+	Result    CreateZoneResult   `json:"result"`
 }
 
 type CreateZoneResult struct {
-    Data starshield.Zone `json:"data"`
+	Data starshield.Zone `json:"data"`
 }

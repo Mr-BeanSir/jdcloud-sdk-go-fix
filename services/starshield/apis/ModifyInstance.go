@@ -17,27 +17,26 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type ModifyInstanceRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/* 地域ID  */
+	RegionId string `json:"regionId"`
 
-    /* 地域ID  */
-    RegionId string `json:"regionId"`
+	/* 实例ID  */
+	InstanceId string `json:"instanceId"`
 
-    /* 实例ID  */
-    InstanceId string `json:"instanceId"`
+	/* 套餐类型 (Optional) */
+	PackType *string `json:"packType"`
 
-    /* 套餐类型 (Optional) */
-    PackType *string `json:"packType"`
+	/* 域名增量包数量 (Optional) */
+	ZonePackNum *int `json:"zonePackNum"`
 
-    /* 域名增量包数量 (Optional) */
-    ZonePackNum *int `json:"zonePackNum"`
-
-    /* 支付成功后返回到该路径 (Optional) */
-    ReturnUrl *string `json:"returnUrl"`
+	/* 支付成功后返回到该路径 (Optional) */
+	ReturnUrl *string `json:"returnUrl"`
 }
 
 /*
@@ -47,19 +46,19 @@ type ModifyInstanceRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewModifyInstanceRequest(
-    regionId string,
-    instanceId string,
+	regionId string,
+	instanceId string,
 ) *ModifyInstanceRequest {
 
 	return &ModifyInstanceRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/regions/{regionId}/instance/{instanceId}",
 			Method:  "PUT",
 			Header:  nil,
 			Version: "v1",
 		},
-        RegionId: regionId,
-        InstanceId: instanceId,
+		RegionId:   regionId,
+		InstanceId: instanceId,
 	}
 }
 
@@ -71,78 +70,78 @@ func NewModifyInstanceRequest(
  * param returnUrl: 支付成功后返回到该路径 (Optional)
  */
 func NewModifyInstanceRequestWithAllParams(
-    regionId string,
-    instanceId string,
-    packType *string,
-    zonePackNum *int,
-    returnUrl *string,
+	regionId string,
+	instanceId string,
+	packType *string,
+	zonePackNum *int,
+	returnUrl *string,
 ) *ModifyInstanceRequest {
 
-    return &ModifyInstanceRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instance/{instanceId}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-        RegionId: regionId,
-        InstanceId: instanceId,
-        PackType: packType,
-        ZonePackNum: zonePackNum,
-        ReturnUrl: returnUrl,
-    }
+	return &ModifyInstanceRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instance/{instanceId}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+		RegionId:    regionId,
+		InstanceId:  instanceId,
+		PackType:    packType,
+		ZonePackNum: zonePackNum,
+		ReturnUrl:   returnUrl,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewModifyInstanceRequestWithoutParam() *ModifyInstanceRequest {
 
-    return &ModifyInstanceRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/regions/{regionId}/instance/{instanceId}",
-            Method:  "PUT",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &ModifyInstanceRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/regions/{regionId}/instance/{instanceId}",
+			Method:  "PUT",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param regionId: 地域ID(Required) */
 func (r *ModifyInstanceRequest) SetRegionId(regionId string) {
-    r.RegionId = regionId
+	r.RegionId = regionId
 }
 
 /* param instanceId: 实例ID(Required) */
 func (r *ModifyInstanceRequest) SetInstanceId(instanceId string) {
-    r.InstanceId = instanceId
+	r.InstanceId = instanceId
 }
 
 /* param packType: 套餐类型(Optional) */
 func (r *ModifyInstanceRequest) SetPackType(packType string) {
-    r.PackType = &packType
+	r.PackType = &packType
 }
 
 /* param zonePackNum: 域名增量包数量(Optional) */
 func (r *ModifyInstanceRequest) SetZonePackNum(zonePackNum int) {
-    r.ZonePackNum = &zonePackNum
+	r.ZonePackNum = &zonePackNum
 }
 
 /* param returnUrl: 支付成功后返回到该路径(Optional) */
 func (r *ModifyInstanceRequest) SetReturnUrl(returnUrl string) {
-    r.ReturnUrl = &returnUrl
+	r.ReturnUrl = &returnUrl
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r ModifyInstanceRequest) GetRegionId() string {
-    return r.RegionId
+	return r.RegionId
 }
 
 type ModifyInstanceResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result ModifyInstanceResult `json:"result"`
+	RequestID string               `json:"requestId"`
+	Error     core.ErrorResponse   `json:"error"`
+	Result    ModifyInstanceResult `json:"result"`
 }
 
 type ModifyInstanceResult struct {
-    BuyId string `json:"buyId"`
+	BuyId string `json:"buyId"`
 }

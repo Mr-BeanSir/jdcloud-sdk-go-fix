@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetAdvancedDDOSSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetAdvancedDDOSSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetAdvancedDDOSSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAdvancedDDOSSettingRequest {
 
 	return &GetAdvancedDDOSSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$advanced_ddos",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetAdvancedDDOSSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetAdvancedDDOSSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAdvancedDDOSSettingRequest {
 
-    return &GetAdvancedDDOSSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$advanced_ddos",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetAdvancedDDOSSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$advanced_ddos",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetAdvancedDDOSSettingRequestWithoutParam() *GetAdvancedDDOSSettingRequest {
 
-    return &GetAdvancedDDOSSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$advanced_ddos",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetAdvancedDDOSSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$advanced_ddos",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetAdvancedDDOSSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetAdvancedDDOSSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetAdvancedDDOSSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetAdvancedDDOSSettingResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    GetAdvancedDDOSSettingResult `json:"result"`
 }
 
 type GetAdvancedDDOSSettingResult struct {
-    Data starshield.AdvancedDDoSProtection `json:"data"`
+	Data starshield.AdvancedDDoSProtection `json:"data"`
 }

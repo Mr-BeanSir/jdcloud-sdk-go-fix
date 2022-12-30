@@ -17,18 +17,17 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
 )
 
 type DeleteSSLConfigurationRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
-
-    /*   */
-    Identifier string `json:"identifier"`
+	/*   */
+	Identifier string `json:"identifier"`
 }
 
 /*
@@ -38,19 +37,19 @@ type DeleteSSLConfigurationRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewDeleteSSLConfigurationRequest(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *DeleteSSLConfigurationRequest {
 
 	return &DeleteSSLConfigurationRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/custom_certificates/{identifier}",
 			Method:  "DELETE",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
 	}
 }
 
@@ -59,57 +58,57 @@ func NewDeleteSSLConfigurationRequest(
  * param identifier:  (Required)
  */
 func NewDeleteSSLConfigurationRequestWithAllParams(
-    zone_identifier string,
-    identifier string,
+	zone_identifier string,
+	identifier string,
 ) *DeleteSSLConfigurationRequest {
 
-    return &DeleteSSLConfigurationRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/custom_certificates/{identifier}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-        Identifier: identifier,
-    }
+	return &DeleteSSLConfigurationRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/custom_certificates/{identifier}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+		Identifier:      identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewDeleteSSLConfigurationRequestWithoutParam() *DeleteSSLConfigurationRequest {
 
-    return &DeleteSSLConfigurationRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/custom_certificates/{identifier}",
-            Method:  "DELETE",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &DeleteSSLConfigurationRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/custom_certificates/{identifier}",
+			Method:  "DELETE",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *DeleteSSLConfigurationRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 /* param identifier: (Required) */
 func (r *DeleteSSLConfigurationRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r DeleteSSLConfigurationRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type DeleteSSLConfigurationResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result DeleteSSLConfigurationResult `json:"result"`
+	RequestID string                       `json:"requestId"`
+	Error     core.ErrorResponse           `json:"error"`
+	Result    DeleteSSLConfigurationResult `json:"result"`
 }
 
 type DeleteSSLConfigurationResult struct {
-    Data string `json:"data"`
+	Data string `json:"data"`
 }

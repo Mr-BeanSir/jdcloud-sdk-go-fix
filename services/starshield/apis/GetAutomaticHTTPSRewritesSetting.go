@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetAutomaticHTTPSRewritesSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetAutomaticHTTPSRewritesSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetAutomaticHTTPSRewritesSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAutomaticHTTPSRewritesSettingRequest {
 
 	return &GetAutomaticHTTPSRewritesSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetAutomaticHTTPSRewritesSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetAutomaticHTTPSRewritesSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetAutomaticHTTPSRewritesSettingRequest {
 
-    return &GetAutomaticHTTPSRewritesSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetAutomaticHTTPSRewritesSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetAutomaticHTTPSRewritesSettingRequestWithoutParam() *GetAutomaticHTTPSRewritesSettingRequest {
 
-    return &GetAutomaticHTTPSRewritesSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetAutomaticHTTPSRewritesSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$automatic_https_rewrites",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetAutomaticHTTPSRewritesSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetAutomaticHTTPSRewritesSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetAutomaticHTTPSRewritesSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetAutomaticHTTPSRewritesSettingResult `json:"result"`
+	RequestID string                                 `json:"requestId"`
+	Error     core.ErrorResponse                     `json:"error"`
+	Result    GetAutomaticHTTPSRewritesSettingResult `json:"result"`
 }
 
 type GetAutomaticHTTPSRewritesSettingResult struct {
-    Data starshield.ZoneSetting `json:"data"`
+	Data starshield.ZoneSetting `json:"data"`
 }

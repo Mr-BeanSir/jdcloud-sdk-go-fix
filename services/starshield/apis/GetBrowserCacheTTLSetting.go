@@ -17,16 +17,15 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type GetBrowserCacheTTLSettingRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
-
-    /*   */
-    Zone_identifier string `json:"zone_identifier"`
+	/*   */
+	Zone_identifier string `json:"zone_identifier"`
 }
 
 /*
@@ -35,17 +34,17 @@ type GetBrowserCacheTTLSettingRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewGetBrowserCacheTTLSettingRequest(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetBrowserCacheTTLSettingRequest {
 
 	return &GetBrowserCacheTTLSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
 			Method:  "GET",
 			Header:  nil,
 			Version: "v1",
 		},
-        Zone_identifier: zone_identifier,
+		Zone_identifier: zone_identifier,
 	}
 }
 
@@ -53,50 +52,50 @@ func NewGetBrowserCacheTTLSettingRequest(
  * param zone_identifier:  (Required)
  */
 func NewGetBrowserCacheTTLSettingRequestWithAllParams(
-    zone_identifier string,
+	zone_identifier string,
 ) *GetBrowserCacheTTLSettingRequest {
 
-    return &GetBrowserCacheTTLSettingRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-        Zone_identifier: zone_identifier,
-    }
+	return &GetBrowserCacheTTLSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+		Zone_identifier: zone_identifier,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewGetBrowserCacheTTLSettingRequestWithoutParam() *GetBrowserCacheTTLSettingRequest {
 
-    return &GetBrowserCacheTTLSettingRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
-            Method:  "GET",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &GetBrowserCacheTTLSettingRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{zone_identifier}/settings$$browser_cache_ttl",
+			Method:  "GET",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param zone_identifier: (Required) */
 func (r *GetBrowserCacheTTLSettingRequest) SetZone_identifier(zone_identifier string) {
-    r.Zone_identifier = zone_identifier
+	r.Zone_identifier = zone_identifier
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r GetBrowserCacheTTLSettingRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type GetBrowserCacheTTLSettingResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result GetBrowserCacheTTLSettingResult `json:"result"`
+	RequestID string                          `json:"requestId"`
+	Error     core.ErrorResponse              `json:"error"`
+	Result    GetBrowserCacheTTLSettingResult `json:"result"`
 }
 
 type GetBrowserCacheTTLSettingResult struct {
-    Data starshield.BrowserCacheTTL `json:"data"`
+	Data starshield.BrowserCacheTTL `json:"data"`
 }

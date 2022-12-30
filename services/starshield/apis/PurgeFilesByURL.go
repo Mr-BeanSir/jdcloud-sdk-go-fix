@@ -17,19 +17,18 @@
 package apis
 
 import (
-    "github.com/jdcloud-api/jdcloud-sdk-go/core"
-    starshield "github.com/jdcloud-api/jdcloud-sdk-go/services/starshield/models"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/models"
 )
 
 type PurgeFilesByURLRequest struct {
+	core.JDCloudRequest
 
-    core.JDCloudRequest
+	/*   */
+	Identifier string `json:"identifier"`
 
-    /*   */
-    Identifier string `json:"identifier"`
-
-    /* 应从缓存中删除的URL数组 (Optional) */
-    Files []string `json:"files"`
+	/* 应从缓存中删除的URL数组 (Optional) */
+	Files []string `json:"files"`
 }
 
 /*
@@ -38,17 +37,17 @@ type PurgeFilesByURLRequest struct {
  * @Deprecated, not compatible when mandatory parameters changed
  */
 func NewPurgeFilesByURLRequest(
-    identifier string,
+	identifier string,
 ) *PurgeFilesByURLRequest {
 
 	return &PurgeFilesByURLRequest{
-        JDCloudRequest: core.JDCloudRequest{
+		JDCloudRequest: core.JDCloudRequest{
 			URL:     "/zones/{identifier}/purge_cache__purgeFilesByURL",
 			Method:  "POST",
 			Header:  nil,
 			Version: "v1",
 		},
-        Identifier: identifier,
+		Identifier: identifier,
 	}
 }
 
@@ -57,57 +56,57 @@ func NewPurgeFilesByURLRequest(
  * param files: 应从缓存中删除的URL数组 (Optional)
  */
 func NewPurgeFilesByURLRequestWithAllParams(
-    identifier string,
-    files []string,
+	identifier string,
+	files []string,
 ) *PurgeFilesByURLRequest {
 
-    return &PurgeFilesByURLRequest{
-        JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}/purge_cache__purgeFilesByURL",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-        Identifier: identifier,
-        Files: files,
-    }
+	return &PurgeFilesByURLRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}/purge_cache__purgeFilesByURL",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+		Identifier: identifier,
+		Files:      files,
+	}
 }
 
 /* This constructor has better compatible ability when API parameters changed */
 func NewPurgeFilesByURLRequestWithoutParam() *PurgeFilesByURLRequest {
 
-    return &PurgeFilesByURLRequest{
-            JDCloudRequest: core.JDCloudRequest{
-            URL:     "/zones/{identifier}/purge_cache__purgeFilesByURL",
-            Method:  "POST",
-            Header:  nil,
-            Version: "v1",
-        },
-    }
+	return &PurgeFilesByURLRequest{
+		JDCloudRequest: core.JDCloudRequest{
+			URL:     "/zones/{identifier}/purge_cache__purgeFilesByURL",
+			Method:  "POST",
+			Header:  nil,
+			Version: "v1",
+		},
+	}
 }
 
 /* param identifier: (Required) */
 func (r *PurgeFilesByURLRequest) SetIdentifier(identifier string) {
-    r.Identifier = identifier
+	r.Identifier = identifier
 }
 
 /* param files: 应从缓存中删除的URL数组(Optional) */
 func (r *PurgeFilesByURLRequest) SetFiles(files []string) {
-    r.Files = files
+	r.Files = files
 }
 
 // GetRegionId returns path parameter 'regionId' if exist,
 // otherwise return empty string
 func (r PurgeFilesByURLRequest) GetRegionId() string {
-    return ""
+	return ""
 }
 
 type PurgeFilesByURLResponse struct {
-    RequestID string `json:"requestId"`
-    Error core.ErrorResponse `json:"error"`
-    Result PurgeFilesByURLResult `json:"result"`
+	RequestID string                `json:"requestId"`
+	Error     core.ErrorResponse    `json:"error"`
+	Result    PurgeFilesByURLResult `json:"result"`
 }
 
 type PurgeFilesByURLResult struct {
-    Data starshield.Zone `json:"data"`
+	Data starshield.Zone `json:"data"`
 }
