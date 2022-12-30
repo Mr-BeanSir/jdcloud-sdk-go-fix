@@ -19,8 +19,8 @@ package client
 import (
 	"encoding/json"
 	"errors"
-	"github.com/Mr-BeanSir/jdcloud-sdk-go//core"
-	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go//services/starshield/apis"
+	"github.com/Mr-BeanSir/jdcloud-sdk-go/core"
+	starshield "github.com/Mr-BeanSir/jdcloud-sdk-go/services/starshield/apis"
 )
 
 type StarshieldClient struct {
